@@ -20,5 +20,13 @@
     "html-webpack-plugin": "^2.30.1",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.8.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IT2810/it2810-webutvikling-h17-prosjekt-3-group-21.git"
+  },
+  "bugs": {
+    "url": "https://github.com/IT2810/it2810-webutvikling-h17-prosjekt-3-group-21/issues"
+  },
+  "homepage": "https://github.com/IT2810/it2810-webutvikling-h17-prosjekt-3-group-21#readme"
 }
