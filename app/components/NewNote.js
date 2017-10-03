@@ -4,10 +4,17 @@ import {
     ButtonToolbar
 } from 'react-bootstrap';
 
+const styles = {
+    width: '40%',
+    marginLeft: '600px',
+    marginTop: '300px',
+    fontFamily: 'sans-serif'
+};
+
 export default class NewNote extends React.Component {
     render() {
         return(
-            <form>
+            <form className="NewNote" style={styles}>
                 <FormGroup controlId="noteTitle">
                     <ControlLabel>Title</ControlLabel>
                     <FormControl type="text" placeholder="Enter title" />
@@ -33,8 +40,8 @@ export default class NewNote extends React.Component {
                 </FormGroup>
 
                 <ButtonToolbar>
-                    <Button type="submit"><Glyphicon glyph="ok" />Submit</Button>
-                    <Button type="cancel"><Glyphicon glyph="remove" />Cancel</Button>
+                    <Button type="submit"><Glyphicon glyph="ok" /> Submit</Button>
+                    <Button type="cancel"><Glyphicon glyph="remove" /> Cancel</Button>
                 </ButtonToolbar>
             </form>
         );
