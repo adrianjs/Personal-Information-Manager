@@ -1,6 +1,8 @@
-.NewNote {
-    width: 40%;
-    margin-left: 600px;
-    margin-top: 300px;
-    font-family: sans-serif;
+.NewNote form {
+    padding-bottom: 15px;
+}
+
+.NewNote form textarea {
+    height: 300px;
+    font-size: 24px;
 }
