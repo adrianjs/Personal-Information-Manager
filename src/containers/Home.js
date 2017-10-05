@@ -1,4 +1,5 @@
 import React from 'react';
+import { Row, Col } from 'react-bootstrap';
 import './Home.css';
 
 export default class Home extends React.Component {
@@ -6,8 +7,17 @@ export default class Home extends React.Component {
         return(
             <div className="Home">
                 <div className="lander">
-                    <h1>Note Taker Supreme</h1>
-                    <p>A far from simple note taking app!</p>
+                    <Row>
+                        <Col xs={6} md={4}>
+                            Kalender her!
+                        </Col>
+                        <Col xs={6} md={4}>
+                            Notater her?
+                        </Col>
+                        <Col xs={6} md={4}>
+                            ToDo-list?
+                        </Col>
+                    </Row>
                 </div>
             </div>
         )
