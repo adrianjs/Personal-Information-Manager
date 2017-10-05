@@ -1,0 +1,26 @@
+#todoTitle {
+    margin-top: 0;
+}
+
+#allTasks {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.todoTask {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.todoTxt {
+    flex-grow: 6;
+    text-align: left;
+}
+
+.todoBtn {
+    flex-grow: 0.5;
+}

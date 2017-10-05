@@ -1,6 +1,15 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import './Home.css';
+import { MainTodo } from '../components/MainTodo';
+
+//Default task list
+var taskList = ["Task 1", "Task 2", "Task 3"];
+//Getting tasks from local storage
+var tasks = localStorage.getItem('savedTasks');
+if(tasks) {
+    taskList = JSON.parse(tasks);
+}
 
 export default class Home extends React.Component {
     render(){
@@ -15,7 +24,7 @@ export default class Home extends React.Component {
                             Notater her?
                         </Col>
                         <Col xs={6} md={4}>
-                            ToDo-list?
+                            <MainTodo tasks={taskList} />
                         </Col>
                     </Row>
                 </div>
