@@ -23,4 +23,5 @@
 
 .todoBtn {
     flex-grow: 0.5;
+    flex: 1;
 }

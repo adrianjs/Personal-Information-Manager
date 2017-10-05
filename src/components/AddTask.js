@@ -18,7 +18,7 @@ export class AddTask extends React.Component {
     render() {
         return (
             <form onSubmit={this.submitted}>
-                <input type="text" placeholder="Add Task" />
+                <input type="text" placeholder="Hit enter to add" />
             </form>
         );
     }
