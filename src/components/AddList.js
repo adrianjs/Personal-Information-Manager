@@ -16,7 +16,7 @@ export class AddList extends React.Component {
     render() {
         //holds control over the list by adding/removing elements and buttons whenever a task is added/removed
         var items = this.props.tasks.map((element, i) => {
-            return <div class="todoTask" key={i}><span class="todoTxt">{element}</span><button class="todoBtn" onClick={this.remove}>Slett</button><br/></div>
+            return <div className="todoTask" key={i}><span className="todoTxt">{element}</span><button className="todoBtn" onClick={this.remove}>Slett</button><br/></div>
         });
         return (
             <div id="allTasks">{items}</div>
