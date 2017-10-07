@@ -1,6 +1,8 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import './Home.css';
+import Calendar from "./Calendar";
+
 
 export default class Home extends React.Component {
     render(){
@@ -9,7 +11,7 @@ export default class Home extends React.Component {
                 <div className="lander">
                     <Row>
                         <Col xs={6} md={4}>
-                            Kalender her!
+                            <Calendar/>
                         </Col>
                         <Col xs={6} md={4}>
                             Notater her?
