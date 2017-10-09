@@ -34,7 +34,7 @@ export class MainTodo extends React.Component {
     render() {
         return (
             <div id="todoMain">
-                <h1 id="todoTitle">ToDo List</h1>
+                <h1 id="todoTitle">Gjøremål</h1>
                 <AddTask updateList={this.updateList} />
                 <AddList tasks={this.state.tasks} remove={this.removeTask} />
             </div>
