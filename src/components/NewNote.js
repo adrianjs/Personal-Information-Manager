@@ -1,9 +1,9 @@
 import React from 'react';
 import {
-    FormGroup, FormControl, ControlLabel, Radio,
-    ButtonToolbar
+    FormGroup, FormControl, ControlLabel, Radio, ButtonToolbar
 } from 'react-bootstrap';
 import LoaderButton from './LoaderButton';
+import './Note.css';
 
 export class NewNote extends React.Component {
     constructor(props) {

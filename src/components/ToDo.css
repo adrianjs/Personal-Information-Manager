@@ -3,13 +3,16 @@
 }
 
 #allTasks {
-    width: 60%;
+    width: 70%;
     margin: auto;
     display: flex;
     flex-direction: column;
 }
 
 .todoTask {
+    background-color: #eeeeee;
+    border: solid grey 1px;
+    padding: 5px;
     width: 100%;
     display: flex;
     justify-content: space-around;
@@ -19,9 +22,11 @@
 .todoTxt {
     flex: 6;
     text-align: left;
-    margin-right: 10px;
+    margin: auto;
+    font-size: 15px;
 }
 
 .todoBtn {
+    margin: auto;
     flex: 1;
 }

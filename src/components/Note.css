@@ -1,0 +1,25 @@
+.note {
+    background-color: #eeeeee;
+    margin: 10px;
+    padding: 15px;
+    border: solid grey 1px;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+}
+
+.noteContainer {
+    display: flex;
+    flex-flow: column;
+    text-align: left;
+}
+
+.noteTitle {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.noteBtn {
+    margin: auto;
+    margin-right: 0%;
+}
