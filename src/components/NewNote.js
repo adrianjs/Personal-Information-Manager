@@ -68,7 +68,7 @@ export class NewNote extends React.Component {
                     </Radio>
                 </FormGroup>
 
-                <ButtonToolbar>
+                <ButtonToolbar id="saveBtn">
                     <LoaderButton
                         bsSize="lg"
                         bsStyle="primary"
