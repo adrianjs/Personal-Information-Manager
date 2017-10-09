@@ -10,6 +10,8 @@ var tasks = localStorage.getItem('savedTasks');
 if(tasks) {
     taskList = JSON.parse(tasks);
 }
+import Calendar from "./Calendar";
+
 
 export default class Home extends React.Component {
     render(){
@@ -17,8 +19,8 @@ export default class Home extends React.Component {
             <div className="Home">
                 <div className="lander">
                     <Row>
-                        <Col xs={6} md={4}>
-                            Kalender her!
+                        <Col xs={6} md={4} className="calendar-rectangle">
+                            <div className="calendar-content"><Calendar /></div>
                         </Col>
                         <Col xs={6} md={4}>
                             Notater her?
