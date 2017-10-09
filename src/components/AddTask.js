@@ -11,7 +11,6 @@ export class AddTask extends React.Component {
 
     //prevents refreshing of window and submits the text from the form to the list
     submitted(event) {
-        console.log("subbs");
         event.preventDefault();
         var input = event.target.querySelector('input');
         var value = input.value;
