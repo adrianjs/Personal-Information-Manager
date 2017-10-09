@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 
 export class NoteList extends React.Component {
     constructor(props) {
@@ -18,7 +19,7 @@ export class NoteList extends React.Component {
                 <span className="noteTitle">{element[0]}</span><br/>
                 <span className="noteText">{element[1]}</span><br/>
                 <span className="notePrior">{element[2]}</span>
-                <button className="noteBtn" onClick={this.remove}>Delete</button><br/>
+                <Button className="noteBtn" bsStyle="danger" bsSize="small" onClick={this.remove}>Delete</Button><br/>
             </div>
         });
         return (

@@ -1,9 +1,7 @@
 import React from 'react';
 import { NewNote } from './NewNote';
 import { NoteList } from './NoteList';
-import {
-    Button
-} from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 export class MainNote extends React.Component {
     constructor(props) {
@@ -51,7 +49,7 @@ export class MainNote extends React.Component {
             <div id="noteMain">
                 <h1 id="noteTitle">Notes</h1>
                 <NoteList notes={this.state.notes} remove={this.removeNote} />
-                <Button bsStyle="primary" bsSize="small" onClick={this.open}>New note</Button>
+                <Button bsStyle="primary" bsSize="small" onClick={this.open}>New note</Button><br/><br/>
                 <NewNote newNote={this.newNote} />
                 {/*<div className="static-modal">
                     <Modal show={this.state.showModal} onHide={this.close}>

@@ -1,14 +1,13 @@
 .calendar-rectangle {
     width: 100%;
     height: 100%;
-    position: relative;
     margin-left: auto;
     margin-right: auto;
-    color: #616161;
+    color: #337ab7;
     font-size: 1em;
     font-family: "Fira Code", sans-serif;
     overflow: hidden;
-    box-shadow: 0 0 50px #888888;
+    box-shadow: 0 0 1px #888888;
 }
 
 .calendar-rectangle:before {
@@ -46,7 +45,7 @@
     height: 70%;
     white-space: nowrap;
     font-size: 1.2em;
-    background-color: #656565;
+    background-color: #336ab7;
 }
 
 .main-calendar .calendar-header .title-header .header-text {
@@ -69,7 +68,7 @@
 .main-calendar .calendar-header .days-header {
     width: 100%;
     height: 30%;
-    background-color: #616161;
+    background-color: #337ab7;
 }
 .main-calendar .calendar-header .button-container {
     width: 100%;

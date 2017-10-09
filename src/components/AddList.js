@@ -1,5 +1,6 @@
 import React from 'react';
 import './ToDo.css';
+import { Button } from 'react-bootstrap';
 
 export class AddList extends React.Component {
     constructor(props) {
@@ -16,7 +17,7 @@ export class AddList extends React.Component {
     render() {
         //holds control over the list by adding/removing elements and buttons whenever a task is added/removed
         var items = this.props.tasks.map((element, i) => {
-            return <div className="todoTask" key={i}><span className="todoTxt">{element}</span><button className="todoBtn" onClick={this.remove}>Slett</button><br/></div>
+            return <div className="todoTask" key={i}><span className="todoTxt">{element}</span><Button className="todoBtn" bsStyle="danger" bsSize="small" onClick={this.remove}>Delete</Button><br/></div>
         });
         return (
             <div id="allTasks">{items}</div>
