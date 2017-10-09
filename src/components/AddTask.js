@@ -1,4 +1,7 @@
 import React from 'react';
+import {
+    FormGroup, FormControl
+} from 'react-bootstrap';
 
 export class AddTask extends React.Component {
     constructor(props) {
@@ -17,9 +20,9 @@ export class AddTask extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.submitted}>
-                <input type="text" placeholder="Hit enter to add" />
-            </form>
+            <FormGroup controlId="todoInput">
+                <FormControl type="text" onSubmit={this.submitted} placeholder="Hit enter to add" />
+            </FormGroup>
         );
     }
 }
