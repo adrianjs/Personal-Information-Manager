@@ -6,9 +6,9 @@ import { MainNote } from '../components/MainNote';
 import Calendar from "./Calendar";
 
 //Default task list
-var noteList = [["NoteTitle 1", "NoteText 1", "NotePriority 1"],
-                ["NoteTitle 2", "NoteText 2", "NotePriority 2"],
-                ["NoteTitle 3", "NoteText 3", "NotePriority 3"]];
+var noteList = [["NoteTitle 1", "NoteText 1", "High"],
+                ["NoteTitle 2", "NoteText 2", "Mid"],
+                ["NoteTitle 3", "NoteText 3", "Low"]];
 //Getting tasks from local storage
 var notes = localStorage.getItem('savedNotes');
 if (notes) {

@@ -11,6 +11,7 @@ export class AddTask extends React.Component {
 
     //prevents refreshing of window and submits the text from the form to the list
     submitted(event) {
+        console.log("subbs");
         event.preventDefault();
         var input = event.target.querySelector('input');
         var value = input.value;
@@ -20,9 +21,9 @@ export class AddTask extends React.Component {
 
     render() {
         return (
-            <FormGroup controlId="todoInput">
-                <FormControl type="text" onSubmit={this.submitted} placeholder="Hit enter to add" />
-            </FormGroup>
+            <form onSubmit={this.submitted}>
+                <input type="text"  placeholder="Hit enter to add" />
+            </form>
         );
     }
 }
