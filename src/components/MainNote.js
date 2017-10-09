@@ -33,7 +33,6 @@ export class MainNote extends React.Component {
     }
 
     removeNote(text) {
-        console.log(text);
         var updatedNotes = this.state.notes;
         updatedNotes.splice(updatedNotes.indexOf([text]), 1);
         this.setState({notes: updatedNotes})

@@ -3,6 +3,7 @@ import { Row, Col } from 'react-bootstrap';
 import './Home.css';
 import { MainTodo } from '../components/MainTodo';
 import { MainNote } from '../components/MainNote';
+import Calendar from "./Calendar";
 
 //Default task list
 var noteList = [["NoteTitle 1", "NoteText 1", "NotePriority 1"],
@@ -21,8 +22,6 @@ var tasks = localStorage.getItem('savedTasks');
 if (tasks) {
     taskList = JSON.parse(tasks);
 }
-import Calendar from "./Calendar";
-
 
 export default class Home extends React.Component {
     render(){
