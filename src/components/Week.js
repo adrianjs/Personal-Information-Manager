@@ -30,7 +30,7 @@ export default class Week extends React.Component {
 
             days.push(<Day day={day} selected={selected} select={select} />);
             date = date.clone();
-            date.add(1, '1');
+            date.add(1, 'd');
         }
         return (
             <div className="row week">

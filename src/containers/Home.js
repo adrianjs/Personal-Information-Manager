@@ -10,8 +10,8 @@ export default class Home extends React.Component {
             <div className="Home">
                 <div className="lander">
                     <Row>
-                        <Col xs={6} md={4}>
-                            <Calendar/>
+                        <Col xs={6} md={4} className="calendar-rectangle">
+                            <div className="calendar-content"><Calendar /></div>
                         </Col>
                         <Col xs={6} md={4}>
                             Notater her?

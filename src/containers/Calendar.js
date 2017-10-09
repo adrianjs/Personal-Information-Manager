@@ -2,10 +2,15 @@ import React from 'react';
 import moment from 'moment';
 import { Modal } from 'react-bootstrap';
 import Events from '../components/Events'
-import Week from "../components/Week";
 import DayNames from "../components/DayNames";
 import './Calendar.css';
+import Week from "../components/Week";
 
+/*
+TODO: Add modal to add events (Modal popup when pressing to add event instead of browser popup)
+TODO: Add all modal functions necessary
+TODO: Add event handling though modal
+ */
 
 export default class Calendar extends React.Component {
     constructor(props){
@@ -13,7 +18,7 @@ export default class Calendar extends React.Component {
 
         this.state = {
             selectedMonth: moment(),
-            selectedDay: moment(),
+            selectedDay: moment().startOf("day"),
             selectedMonthEvents: [],
             showEvents: false
         };
@@ -164,6 +169,7 @@ export default class Calendar extends React.Component {
         }
     }
 
+    //TODO: Add event handling though modal, with possibility for setting time
     addEvent(){
         const currentSelectedDate = this.state.selectedDay;
         let isAfterDay = moment().startOf("day").subtract(1, "d");
