@@ -9,7 +9,7 @@ export class AddList extends React.Component {
 
     //removes tasks by comparing the text of the task with the text of the parentnode of the button
     remove(element) {
-        var value = element.target.parentNode.querySelector('span').innerText;
+        var value = element.target.parentNode.querySelector('span').textContent;
         this.props.remove(value);
     }
 

@@ -35,7 +35,7 @@ export class NewNote extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit} onCancel={this.handleSubmit}>
+            <form id="noteForm" onSubmit={this.handleSubmit} onCancel={this.handleSubmit}>
                 <FormGroup controlId="noteTitle">
                     <ControlLabel>Title</ControlLabel>
                     <FormControl

@@ -25,7 +25,6 @@ export class MainNote extends React.Component {
 
     //this.updateLocalStorage(updatedTasks) updates the local storage everytime a task gets added or removed
     newNote(text) {
-        console.log(text);
         var updatedNotes = this.state.notes;
         updatedNotes.unshift([text[0], text[1], text[2]]);
         this.setState({notes: updatedNotes})
