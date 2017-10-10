@@ -1,9 +1,9 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
+import Calendar from "./Calendar";
 import './Home.css';
 import { MainTodo } from '../components/MainTodo';
 import { MainNote } from '../components/MainNote';
-import Calendar from "./Calendar";
 
 //Default task list
 var noteList = [["NoteTitle 1", "NoteText 1", "High"],
@@ -22,6 +22,7 @@ var tasks = localStorage.getItem('savedTasks');
 if (tasks) {
     taskList = JSON.parse(tasks);
 }
+
 
 export default class Home extends React.Component {
     render(){
