@@ -19,5 +19,17 @@
   },
   "devDependencies": {
     "moment": "2.18.1"
-  }
+  },
+  "description": "This is a \"personal information manager\", which we took to mean\r an app that contains notes, todos and a calendar. Built in React,\r with React-Bootstrap. Enjoy!",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IT2810/it2810-webutvikling-h17-prosjekt-3-group-21.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IT2810/it2810-webutvikling-h17-prosjekt-3-group-21/issues"
+  },
+  "homepage": "https://github.com/IT2810/it2810-webutvikling-h17-prosjekt-3-group-21#readme"
 }
