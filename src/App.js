@@ -12,7 +12,7 @@ class App extends Component {
         <Navbar fluid collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <Link to="/">Note Taker Supreme</Link>
+              <Link to="/">Note Taker Supreme(s)</Link>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
