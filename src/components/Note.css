@@ -1,6 +1,6 @@
 .note {
     background-color: #eeeeee;
-    margin: 10px;
+    margin-bottom: 15px;
     padding: 15px;
     border: solid grey 1px;
     display: flex;
@@ -11,12 +11,18 @@
 .noteContainer {
     display: flex;
     flex-flow: column;
-    text-align: left;
 }
 
 .noteTitle {
     font-weight: bold;
     font-size: 20px;
+    display: flex;
+    text-align: left;
+}
+
+#MainNoteTitle {
+    color: blue;
+    text-align: center;
 }
 
 .noteBtn {
