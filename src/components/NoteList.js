@@ -9,8 +9,11 @@ export class NoteList extends React.Component {
 
     //removes tasks by comparing the text of the task with the text of the parentnode of the button
     remove(element) {
-        var value = element.target.parentNode.querySelector('span').innerText;
-        this.props.remove(value);
+        var value1 = element.target.parentNode.querySelectorAll('span')[0].textContent;
+        var value2 = element.target.parentNode.querySelectorAll('span')[1].textContent;
+        var value3 = element.target.parentNode.querySelectorAll('span')[2].textContent;
+        console.log([value1, value2, value3]);
+        this.props.remove([value1, value2, value3]);
     }
 
     render() {
