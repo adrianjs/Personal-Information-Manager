@@ -9,16 +9,15 @@ export class NoteList extends React.Component {
 
     //removes tasks by comparing the text of the task with the text of the parentnode of the button
     remove(element) {
-        var value1 = element.target.parentNode.querySelectorAll('span')[0].textContent;
-        var value2 = element.target.parentNode.querySelectorAll('span')[1].textContent;
-        var value3 = element.target.parentNode.querySelectorAll('span')[2].textContent;
-        console.log([value1, value2, value3]);
-        this.props.remove([value1, value2, value3]);
+        var thisState = this.props.notes;
+        var value = element.target.parentNode.id;
+        thisState.splice(value, 1);
+        this.setState({thisState});
     }
 
     render() {
         var items = this.props.notes.map((element, i) => {
-            return <div className="note" key={i}>
+            return <div className="note" key={i} id={i}>
                 <div className="noteContainer">
                     <span className="noteTitle">{element[0]}</span><br/>
                     <span className="noteText">{element[1]}</span><br/>
@@ -26,7 +25,7 @@ export class NoteList extends React.Component {
                 </div>
                 <Button className="noteBtn" bsStyle="danger" bsSize="small" onClick={this.remove}>Delete</Button><br/>
             </div>
-        });
+        }, this);
         return (
             <div id="allNotes">{items}</div>
         );
