@@ -1,5 +1,5 @@
 .calendar-rectangle {
-    width: 100%;
+    width: 300px;
     height: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -247,41 +247,13 @@
 
 @media (min-width: 576px){
     .calendar-rectangle {
-        width: 70%;
+        width: 300px;
     }
 }
 
 @media (min-width: 768px){
     .calendar-rectangle {
-        width: 50%;
+        width: 300px;
         font-size: 1em;
-    }
-}
-
-@media (min-width: 992px){
-    .calendar-rectangle {
-        width: 40%;
-        font-size: 1em;
-    }
-
-    .main-calendar .calendar-header .title-header {
-        font-size: 1.4em;
-    }
-}
-
-@media (min-width: 1200px){
-    .calendar-rectangle {
-        width: 30%;
-        font-size: 1em;
-    }
-
-    .main-calendar .calendar-header .title-header {
-        font-size: 1.2em;
-    }
-}
-
-@media (min-width: 1300px){
-    .calendar-rectangle {
-        width: 20%;
     }
 }
