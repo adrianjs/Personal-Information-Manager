@@ -3,7 +3,6 @@ import { CSSTransitionGroup } from 'react-transition-group';
 
 export default class Events extends React.Component {
     render(){
-        const currentMonthView = this.props.selectedMonth;
         const currentSelectedDay = this.props.selectedDay;
         const monthEvents = this.props.selectedMonthEvents;
         const removeEvent = this.props.removeEvent;

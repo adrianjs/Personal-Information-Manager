@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { Nav, Navbar } from 'react-bootstrap';
+import { Navbar } from 'react-bootstrap';
 import Routes from './Routes';
-import RouteNavItem from './components/RouteNavItem';
 import './App.css';
 
 class App extends Component {
@@ -12,17 +11,10 @@ class App extends Component {
         <Navbar fluid collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <Link to="/">Note Taker Supreme</Link>
+              <Link to="/">Note Taker Supreme(s)</Link>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
-          <Navbar.Collapse>
-            <Nav pullRight>
-              <RouteNavItem key={1} href="/new">
-                New Note
-              </RouteNavItem>
-            </Nav>
-          </Navbar.Collapse>
         </Navbar>
         <Routes />
       </div>
