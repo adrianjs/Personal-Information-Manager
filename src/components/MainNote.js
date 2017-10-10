@@ -47,7 +47,7 @@ export class MainNote extends React.Component {
     render() {
         return (
             <div id="noteMain">
-                <h1 id="noteTitle">Notes</h1>
+                <div class="mainTitles"><h1>Notes</h1></div>
                 <NoteList notes={this.state.notes} remove={this.removeNote} />
                 <Button id="newNoteBtn"bsStyle="primary" bsSize="small" onClick={this.open}>New note</Button><br/><br/>
                 <NewNote newNote={this.newNote} />
