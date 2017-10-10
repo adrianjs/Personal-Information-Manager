@@ -21,6 +21,7 @@ export class NoteList extends React.Component {
                     <span className="noteText">{element[1]}</span><br/>
                     <span className="notePrior">{element[2]} priority</span>
                 </div>
+
                 <Button className="noteBtn" bsStyle="danger" bsSize="small" onClick={this.remove}>Delete</Button><br/>
             </div>
         });
