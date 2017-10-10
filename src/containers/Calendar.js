@@ -1,6 +1,5 @@
 import React from 'react';
 import moment from 'moment';
-import { Modal } from 'react-bootstrap';
 import Events from '../components/Events'
 import DayNames from "../components/DayNames";
 import './Calendar.css';
@@ -57,7 +56,6 @@ export default class Calendar extends React.Component {
     }
 
     goToCurrentMonthView(){
-        const currentMonthView = this.state.selectedMonth;
 
         this.setState({
             selectedMonth: moment()
@@ -93,8 +91,6 @@ export default class Calendar extends React.Component {
     }
 
     renderTodayLabel(){
-        const currentSelectedDay = this.state.selectedDay;
-
         return(
             <span className="box today-label" onClick={this.goToCurrentMonthView}>
                 Today
@@ -171,15 +167,11 @@ export default class Calendar extends React.Component {
 
     //TODO: Add event handling though modal, with possibility for setting time
     addEvent(){
-        const currentSelectedDate = this.state.selectedDay;
-        let isAfterDay = moment().startOf("day").subtract(1, "d");
-
         this.handleAdd();
     }
 
     removeEvent(i) {
         const monthEvents = this.state.selectedMonthEvents.slice();
-        const currentSelectedDate = this.state.selectedDay;
 
         let index = i;
 
@@ -274,8 +266,6 @@ export default class Calendar extends React.Component {
     }
 
     render(){
-        const currentMonthView = this.state.selectedMonth;
-        const currentSelectedDay = this.state.selectedDay;
         const showEvents = this.state.showEvents;
 
         if (showEvents) {
