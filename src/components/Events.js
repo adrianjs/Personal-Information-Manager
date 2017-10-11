@@ -1,7 +1,19 @@
 import React from 'react';
+import {Button} from 'react-bootstrap';
 import { CSSTransitionGroup } from 'react-transition-group';
 
 export default class Events extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.keyCount = 0;
+        this.getKey = this.getKey.bind(this);
+    }
+
+    getKey(){
+        return this.keyCount++;
+    }
+
     render(){
         const currentSelectedDay = this.props.selectedDay;
         const monthEvents = this.props.selectedMonthEvents;
@@ -10,27 +22,13 @@ export default class Events extends React.Component {
         const monthEventsRendered = monthEvents.map((event, i) => {
             return(
                 <div
-                    key={event.title}
+                    key={this.getKey()}
                     className="event-container"
-                    onClick={() => removeEvent(i)}
                 >
-                    {/*<CSSTransitionGroup*/}
-                        {/*component="div"*/}
-                        {/*className="animated-time"*/}
-                        {/*transitionName="time"*/}
-                        {/*transitionAppear={true}*/}
-                        {/*transitionAppearTimeout={500}*/}
-                        {/*transitionEnterTimeout={500}*/}
-                        {/*transitionLeaveTimeout={500}*/}
-                    {/*>*/}
-                        {/*<div className="event-time event-attribute">*/}
-                            {/*{event.date.format("HH:mm")}*/}
-                        {/*</div>*/}
-                    {/*</CSSTransitionGroup>*/}
                     <CSSTransitionGroup
                         component="div"
                         className="animated-title"
-                        transitionName="title"
+                        transitionName="time"
                         transitionAppear={true}
                         transitionAppearTimeout={500}
                         transitionEnterTimeout={500}
@@ -38,6 +36,19 @@ export default class Events extends React.Component {
                     >
                         <div className="event-title event-attribute">
                             {event.title}
+                        </div>
+                    </CSSTransitionGroup>
+                    <CSSTransitionGroup
+                        component="div"
+                        className="animated-btn"
+                        transitionName="title"
+                        transitionAppear={true}
+                        transitionAppearTimeout={500}
+                        transitionEnterTimeout={500}
+                        transitionLeaveTimeout={500}
+                    >
+                        <div className="event-title event-attribute">
+                            <Button bsSize="small" bsStyle="danger" onClick={() => removeEvent(i)}>Delete</Button>
                         </div>
                     </CSSTransitionGroup>
                 </div>
