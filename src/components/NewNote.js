@@ -33,7 +33,6 @@ export class NewNote extends React.Component {
             isLoading: null,
             noteTitle: "",
             noteText: "",
-            notePri: "Low"
         });
     };
 
