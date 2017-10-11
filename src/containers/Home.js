@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col } from 'react-bootstrap';
+import {Row, Col, Grid} from 'react-bootstrap';
 import Calendar from "./Calendar";
 import './Home.css';
 import { MainTodo } from '../components/MainTodo';
@@ -29,17 +29,19 @@ export default class Home extends React.Component {
         return(
             <div className="Home">
                 <div className="lander">
-                    <Row>
-                        <Col xs={6} md={4} className="calendar-rectangle">
-                            <div className="calendar-content"><Calendar /></div>
-                        </Col>
-                        <Col xs={6} md={4}>
-                            <MainNote notes={noteList}/>
-                        </Col>
-                        <Col xs={6} md={4}>
-                            <MainTodo tasks={taskList} />
-                        </Col>
-                    </Row>
+                    <Grid>
+                        <Row>
+                            <Col xs={6} md={4} className="calendar-rectangle">
+                                <div className="calendar-content"><Calendar /></div>
+                            </Col>
+                            <Col xs={6} md={4}>
+                                <MainNote notes={noteList}/>
+                            </Col>
+                            <Col xs={6} md={4}>
+                                <MainTodo tasks={taskList} />
+                            </Col>
+                        </Row>
+                    </Grid>
                 </div>
             </div>
         )
