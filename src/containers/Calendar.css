@@ -110,11 +110,11 @@
 .main-calendar .day-events .event-container:hover {
     cursor: pointer;
 }
-.main-calendar .day-events .event-container .animated-time {
-    width: 30%;
-}
+/*.main-calendar .day-events .event-container .animated-time {*/
+    /*width: 30%;*/
+/*}*/
 .main-calendar .day-events .event-container .animated-title {
-    width: 70%;
+    width: 100%;
 }
 .main-calendar .day-events .event-container .event-attribute {
     height: 100%;
