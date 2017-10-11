@@ -33,7 +33,7 @@ export class MainTodo extends React.Component {
 
     render() {
         return (
-            <div id="todoMain">
+            <div className="todoMain">
                 <h1 class="mainTitles">Todo</h1>
                 <AddTask updateList={this.updateList} />
                 <AddList tasks={this.state.tasks} remove={this.removeTask} />

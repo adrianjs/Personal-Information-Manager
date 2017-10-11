@@ -6,11 +6,29 @@
     display: flex;
     flex-flow: row;
     justify-content: space-around;
+
+}
+
+#mainNote {
+    height: 400px;
+    overflow-y: scroll;
+}
+
+/*Gjør sånn at scrollbaren alltid vises.*/
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
 }
 
 .noteContainer {
     display: flex;
     flex-flow: column;
+
 }
 
 .noteTitle {
