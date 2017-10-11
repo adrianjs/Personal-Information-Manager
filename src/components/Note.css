@@ -47,3 +47,8 @@
     margin-top: 0;
     justify-content: center;
 }
+
+.btn-block {
+    margin-top: 13px;
+    margin-bottom: -24px;
+}
