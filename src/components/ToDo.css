@@ -6,6 +6,18 @@
     width: 100%;
     height: 380px;
     overflow-y: scroll;
+    
+}
+
+/*Gjør sånn at scrollbaren alltid vises.*/
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
 }
 
 .todoTask {
@@ -15,7 +27,7 @@
     flex: 1;
     display: flex;
     justify-content: space-around;
-    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .todoTxt {
