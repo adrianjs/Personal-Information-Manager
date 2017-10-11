@@ -2,6 +2,7 @@ import React from 'react';
 import { NewNote } from './NewNote';
 import { NoteList } from './NoteList';
 import { Button } from 'react-bootstrap';
+import SmallModal from "./SmallModal";
 
 export class MainNote extends React.Component {
     constructor(props) {
@@ -32,7 +33,7 @@ export class MainNote extends React.Component {
     removeNote(text) {
         var updatedNotes = this.state.notes;
         updatedNotes.splice(updatedNotes.indexOf([text]), 1);
-        this.setState({notes: updatedNotes})
+        this.setState({notes: updatedNotes});
         this.updateLocalStorage(updatedNotes);
     }
 
@@ -45,25 +46,15 @@ export class MainNote extends React.Component {
     }
 
     render() {
+        let modalClose = () => this.setState({ showModal: false });
         return (
             <div id="noteMain">
                 <div class="mainTitles"><h1>Notes</h1></div>
                 <NoteList notes={this.state.notes} remove={this.removeNote} />
-                <Button id="newNoteBtn"bsStyle="primary" bsSize="small" onClick={this.open}>New note</Button><br/><br/>
+                <Button id="newNoteBtn"bsStyle="primary" bsSize="small" onClick={()=>this.setState({showModal: true})}>New note</Button><br/><br/>
                 <NewNote newNote={this.newNote} />
-                {/*<div className="static-modal">
-                    <Modal show={this.state.showModal} onHide={this.close}>
-                        <Modal.Header closeButton>
-                            <Modal.Title>Create a new note</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                            
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <Button bsStyle="danger" onClick={this.close}>Cancel</Button>
-                        </Modal.Footer>
-                    </Modal>
-                </div>}*/}
+
+                <SmallModal show={this.state.showModal} onHide={modalClose}/>
             </div>
         );
     }
