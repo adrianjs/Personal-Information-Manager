@@ -28,13 +28,16 @@ if (tasks) {
 export default class Home extends React.Component {
     render(){
         return(
-            <div className="flexContainer">
+            
             <div className="Home">
                 <div className="lander">
                     <Grid>
                         <Row>
-                            <Col xs={6} md={4} className="calendar-rectangle">
+                            <Col xs={6} md={4}>
+                            <h1>Calendar</h1>
+                            <div className="calendar-rectangle">
                                 <div className="calendar-content"><Calendar /></div>
+                            </div>
                             </Col>
                             <Col xs={6} md={4}>
                                 <MainNote notes={noteList}/>
@@ -46,7 +49,7 @@ export default class Home extends React.Component {
                     </Grid>
                 </div>
             </div>
-            </div>
+
         )
     }
 }
