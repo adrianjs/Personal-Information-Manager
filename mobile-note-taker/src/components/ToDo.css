@@ -1,0 +1,33 @@
+#todoTitle {
+    color: red;
+}
+
+#allTasks {
+    width: 100%;
+    height: 380px;
+    overflow-y: scroll;
+    border-bottom: 2px black solid;
+}
+
+.todoTask {
+    background-color: #eeeeee;
+    border: solid grey 1px;
+    padding: 5px;
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+}
+
+.todoTxt {
+    flex: 6;
+    align-items: flex-start;
+    margin: auto;
+    font-size: 15px;
+}
+
+.todoBtn {
+    margin: auto;
+
+    flex: 1;
+}
