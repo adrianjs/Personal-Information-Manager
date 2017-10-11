@@ -9,7 +9,8 @@ export class MainNote extends React.Component {
         super(props);
         this.state = {
             notes: props.notes,
-            showModal: false
+            showModal: false,
+            noteModal: props.modal
         };
         this.newNote = this.newNote.bind(this);
         this.removeNote = this.removeNote.bind(this);
@@ -50,8 +51,8 @@ export class MainNote extends React.Component {
             <div id="noteMain">
                 <h1 id="noteTitle">Notes</h1>
                 <NoteList notes={this.state.notes} remove={this.removeNote} />
-                <Button id="newNoteBtn"bsStyle="primary" bsSize="small" onClick={this.open}>New note</Button><br/><br/>
-                <NewNoteModal newNote={this.newNote} />
+                <NewNoteModal modal={this.noteModal} />
+                <Button id="newNoteBtn" bsStyle="primary" bsSize="small" >New note</Button><br/><br/>
                 {/*<div className="static-modal">
                     <Modal show={this.state.showModal} onHide={this.close}>
                         <Modal.Header closeButton>
