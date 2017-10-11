@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 
-export class NoteList extends React.Component {
+export default class NoteList extends React.Component {
     render() {
         var items = this.props.notes.map((element, i) => {
             return <div className="note" key={i} id={i}>

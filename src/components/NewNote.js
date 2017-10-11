@@ -5,7 +5,7 @@ import {
 import LoaderButton from './LoaderButton';
 import './Note.css';
 
-export class NewNote extends React.Component {
+export default class NewNote extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -28,7 +28,7 @@ export class NewNote extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        var value = [this.state.noteTitle, this.state.noteText, this.state.notePri]
+        var value = [this.state.noteTitle, this.state.noteText, this.state.notePri];
         console.log(value);
         this.props.newNote(value);
         this.setState({
@@ -40,7 +40,7 @@ export class NewNote extends React.Component {
 
     render() {
         return (
-            <form id="noteForm" onSubmit={this.handleSubmit} onCancel={this.handleSubmit}>
+            <form id="noteForm" onSubmit={this.handleSubmit}>
                 <FormGroup controlId="noteTitle">
                     <ControlLabel>Title</ControlLabel>
                     <FormControl
