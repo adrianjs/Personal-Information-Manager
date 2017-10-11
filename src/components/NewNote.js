@@ -5,7 +5,7 @@ import {
 import LoaderButton from './LoaderButton';
 import './Note.css';
 
-export class NewNote extends React.Component {
+export default class NewNote extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -22,12 +22,14 @@ export class NewNote extends React.Component {
     }
 
     handleChange = event => {
+        console.log(event.target.value);
         this.setState({[event.target.id]: event.target.value});
     };
 
     handleSubmit(event) {
         event.preventDefault();
-        var value = [this.state.noteTitle, this.state.noteText, this.state.notePri]
+        var value = [this.state.noteTitle, this.state.noteText, this.state.notePri];
+        console.log(value);
         this.props.newNote(value);
         this.setState({
             isLoading: null,
@@ -38,7 +40,7 @@ export class NewNote extends React.Component {
 
     render() {
         return (
-            <form id="noteForm" onSubmit={this.handleSubmit} onCancel={this.handleSubmit}>
+            <form id="noteForm" onSubmit={this.handleSubmit}>
                 <FormGroup controlId="noteTitle">
                     <ControlLabel>Title</ControlLabel>
                     <FormControl
@@ -58,15 +60,15 @@ export class NewNote extends React.Component {
 
                 <ControlLabel>Priority</ControlLabel>
                 <FormGroup>
-                    <Radio id="notePri" name="priority" inline defaultChecked onChange={this.handleChange} value="Low">
+                    <Radio className="notePri" name="priority" inline onChange={this.handleChange} value="Low">
                         Low
                     </Radio>
                     {' '}
-                    <Radio id="notePri" name="priority" inline onChange={this.handleChange} value="Mid">
+                    <Radio className="notePri" name="priority" inline onChange={this.handleChange} value="Mid">
                         Mid
                     </Radio>
                     {' '}
-                    <Radio id="notePri" name="priority" inline onChange={this.handleChange} value="High">
+                    <Radio className="notePri" name="priority" inline onChange={this.handleChange} value="High">
                         High
                     </Radio>
                 </FormGroup>

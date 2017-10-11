@@ -1,8 +1,11 @@
 import React from 'react';
-import { NewNote } from './NewNote';
-import { NoteList } from './NoteList';
+import NoteList from './NoteList';
 import { Button } from 'react-bootstrap';
+<<<<<<< HEAD
 import './Note.css';
+=======
+import SmallModal from "./SmallModal";
+>>>>>>> 16b2cc01eb9629991114892defc1b91b78dc45e7
 
 export class MainNote extends React.Component {
     constructor(props) {
@@ -22,17 +25,18 @@ export class MainNote extends React.Component {
         localStorage.setItem('savedNotes', JSON.stringify(updatedNotes));
     }
 
-    //this.updateLocalStorage(updatedTasks) updates the local storage everytime a task gets added or removed
+    //this.updateLocalStorage(updatedTasks) updates the local storage every time a task gets added or removed
     newNote(text) {
         var updatedNotes = this.state.notes;
         updatedNotes.unshift([text[0], text[1], text[2]]);
-        this.setState({notes: updatedNotes})
+        this.setState({notes: updatedNotes});
         this.updateLocalStorage(updatedNotes);
     }
 
-    removeNote(text) {
+    removeNote(element) {
+        var value = element.target.parentNode.id;
         var updatedNotes = this.state.notes;
-        updatedNotes.splice(updatedNotes.indexOf([text]), 1);
+        updatedNotes.splice(value, 1);
         this.setState({notes: updatedNotes})
         this.updateLocalStorage(updatedNotes);
     }
@@ -46,7 +50,9 @@ export class MainNote extends React.Component {
     }
 
     render() {
+        let modalClose = () => this.setState({ showModal: false });
         return (
+<<<<<<< HEAD
             <div id="tullball">
                 <div class="mainTitles"><h1>Notes</h1></div>
                 <div id="mainNote">
@@ -67,6 +73,14 @@ export class MainNote extends React.Component {
                     </Modal>
                 </div>}*/}
                 </div>
+=======
+            <div id="noteMain">
+                <div className="mainTitles"><h1>Notes</h1></div>
+                <NoteList notes={this.state.notes} remove={this.removeNote} />
+                <Button id="newNoteBtn"bsStyle="primary" bsSize="small" onClick={()=>this.setState({showModal: true})}>New note</Button><br/><br/>
+
+                <SmallModal show={this.state.showModal} onHide={modalClose} newNote={this.newNote} onSubmit={modalClose}/>
+>>>>>>> 16b2cc01eb9629991114892defc1b91b78dc45e7
             </div>
         );
     }
