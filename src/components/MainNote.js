@@ -1,11 +1,8 @@
 import React from 'react';
 import NoteList from './NoteList';
 import { Button } from 'react-bootstrap';
-<<<<<<< HEAD
-import './Note.css';
-=======
 import SmallModal from "./SmallModal";
->>>>>>> 16b2cc01eb9629991114892defc1b91b78dc45e7
+import './Note.css';
 
 export class MainNote extends React.Component {
     constructor(props) {
@@ -52,35 +49,14 @@ export class MainNote extends React.Component {
     render() {
         let modalClose = () => this.setState({ showModal: false });
         return (
-<<<<<<< HEAD
             <div id="tullball">
-                <div class="mainTitles"><h1>Notes</h1></div>
-                <div id="mainNote">
-                <NoteList notes={this.state.notes} remove={this.removeNote} />
-                <Button id="newNoteBtn"bsStyle="primary" bsSize="small" onClick={this.open}>New note</Button><br/><br/>
-                <NewNote newNote={this.newNote} />
-                {/*<div className="static-modal">
-                    <Modal show={this.state.showModal} onHide={this.close}>
-                        <Modal.Header closeButton>
-                            <Modal.Title>Create a new note</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                            
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <Button bsStyle="danger" onClick={this.close}>Cancel</Button>
-                        </Modal.Footer>
-                    </Modal>
-                </div>}*/}
-                </div>
-=======
-            <div id="noteMain">
                 <div className="mainTitles"><h1>Notes</h1></div>
+                <div id="mainNote">
                 <NoteList notes={this.state.notes} remove={this.removeNote} />
                 <Button id="newNoteBtn"bsStyle="primary" bsSize="small" onClick={()=>this.setState({showModal: true})}>New note</Button><br/><br/>
 
                 <SmallModal show={this.state.showModal} onHide={modalClose} newNote={this.newNote} onSubmit={modalClose}/>
->>>>>>> 16b2cc01eb9629991114892defc1b91b78dc45e7
+            </div>
             </div>
         );
     }
