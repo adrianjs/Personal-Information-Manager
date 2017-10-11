@@ -3,17 +3,6 @@ import {Button} from 'react-bootstrap';
 import { CSSTransitionGroup } from 'react-transition-group';
 
 export default class Events extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.keyCount = 0;
-        this.getKey = this.getKey.bind(this);
-    }
-
-    getKey(){
-        return this.keyCount++;
-    }
-
     render(){
         const currentSelectedDay = this.props.selectedDay;
         const monthEvents = this.props.selectedMonthEvents;
@@ -22,7 +11,8 @@ export default class Events extends React.Component {
         const monthEventsRendered = monthEvents.map((event, i) => {
             return(
                 <div
-                    key={this.getKey()}
+                    key={i}
+                    id={i}
                     className="event-container"
                 >
                     <CSSTransitionGroup
