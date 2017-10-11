@@ -1,5 +1,5 @@
 import React from 'react';
-import './NotFound.css';
+import '../components/css/NotFound.css';
 
 export default () =>
     <div className="NotFound">

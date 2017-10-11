@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button, Modal} from 'react-bootstrap';
-import NewNote from "./NewNote";
+import NewNote from "../note/NewNote";
 
 export default class SmallModal extends React.Component{
     render() {

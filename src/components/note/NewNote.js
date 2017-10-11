@@ -3,7 +3,7 @@ import {
     FormGroup, FormControl, ControlLabel, Radio, ButtonToolbar
 } from 'react-bootstrap';
 import LoaderButton from './LoaderButton';
-import './Note.css';
+import '../css/Note.css';
 
 export default class NewNote extends React.Component {
     constructor(props) {
@@ -22,12 +22,10 @@ export default class NewNote extends React.Component {
     }
 
     handleChange = event => {
-        console.log(event.target.value);
         this.setState({[event.target.id]: event.target.value});
     };
 
     onRadioChange(value){
-        console.log('radio change');
         this.setState({
             notePri: value,
         });
@@ -37,7 +35,6 @@ export default class NewNote extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         var value = [this.state.noteTitle, this.state.noteText, this.state.notePri];
-        console.log(value);
         this.props.newNote(value);
         this.setState({
             isLoading: null,

@@ -1,9 +1,9 @@
 import React from 'react';
 import {Row, Col, Grid} from 'react-bootstrap';
 import Calendar from "./Calendar";
-import './Home.css';
-import { MainTodo } from '../components/MainTodo';
-import { MainNote } from '../components/MainNote';
+import '../components/css/Home.css';
+import { MainTodo } from './MainTodo';
+import { MainNote } from './MainNote';
 
 
 //Default task list

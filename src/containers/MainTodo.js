@@ -1,7 +1,7 @@
 import React from 'react';
-import { AddTask } from './AddTask';
-import { AddList } from './AddList';
-import './ToDo.css';
+import { AddTask } from '../components/todo/AddTask';
+import { AddList } from '../components/todo/AddList';
+import '../components/css/ToDo.css';
 
 export class MainTodo extends React.Component {
     constructor(props) {

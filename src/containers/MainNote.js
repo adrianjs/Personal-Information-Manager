@@ -1,8 +1,8 @@
 import React from 'react';
-import NoteList from './NoteList';
+import NoteList from '../components/note/NoteList';
 import { Button } from 'react-bootstrap';
-import SmallModal from "./SmallModal";
-import './Note.css';
+import SmallModal from "../components/calendar/SmallModal";
+import '../components/css/Note.css';
 
 export class MainNote extends React.Component {
     constructor(props) {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { Navbar } from 'react-bootstrap';
 import Routes from './Routes';
-import './App.css';
+import './components/css/App.css';
 
 class App extends Component {
   render() {

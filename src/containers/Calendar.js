@@ -1,9 +1,9 @@
 import React from 'react';
 import moment from 'moment';
-import Events from '../components/Events'
-import DayNames from "../components/DayNames";
-import './Calendar.css';
-import Week from "../components/Week";
+import Events from '../components/calendar/Events'
+import DayNames from "../components/calendar/DayNames";
+import '../components/css/Calendar.css';
+import Week from "../components/calendar/Week";
 
 /*
 TODO: Add modal to add events (Modal popup when pressing to add event instead of browser popup)
@@ -170,7 +170,6 @@ export default class Calendar extends React.Component {
                 this.setState({
                     selectedMonthEvents: monthEvents
                 });
-                console.log(monthEvents);
                 this.updateLocalStorage(monthEvents);                
                 break;
         }
@@ -195,7 +194,6 @@ export default class Calendar extends React.Component {
         this.setState({
             selectedMonthEvents: monthEvents
         });
-        console.log(monthEvents);
         this.updateLocalStorage(monthEvents);
     }
 
