@@ -26,6 +26,14 @@ export default class NewNote extends React.Component {
         this.setState({[event.target.id]: event.target.value});
     };
 
+    onRadioChange(value){
+        console.log('radio change');
+        this.setState({
+            notePri: value,
+        });
+    }
+
+
     handleSubmit(event) {
         event.preventDefault();
         var value = [this.state.noteTitle, this.state.noteText, this.state.notePri];
@@ -60,15 +68,15 @@ export default class NewNote extends React.Component {
 
                 <ControlLabel>Priority</ControlLabel>
                 <FormGroup>
-                    <Radio className="notePri" name="priority" inline onChange={this.handleChange} value="Low">
+                    <Radio className="notePri" name="priority" inline onChange={(e) => this.onRadioChange("Low")} value="Low" checked={this.state.notePri === "Low"}>
                         Low
                     </Radio>
                     {' '}
-                    <Radio className="notePri" name="priority" inline onChange={this.handleChange} value="Mid">
+                    <Radio className="notePri" name="priority" inline onChange={(e) => this.onRadioChange("Mid")} value="Mid" checked={this.state.notePri === "Mid"}>
                         Mid
                     </Radio>
                     {' '}
-                    <Radio className="notePri" name="priority" inline onChange={this.handleChange} value="High">
+                    <Radio className="notePri" name="priority" inline onChange={(e) =>  this.onRadioChange("High")} value="High" checked={this.state.notePri === "High"}>
                         High
                     </Radio>
                 </FormGroup>

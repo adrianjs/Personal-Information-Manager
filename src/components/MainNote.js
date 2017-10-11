@@ -49,14 +49,13 @@ export class MainNote extends React.Component {
     render() {
         let modalClose = () => this.setState({ showModal: false });
         return (
-            <div id="tullball">
+            <div>
                 <div className="mainTitles"><h1>Notes</h1></div>
+                <Button block bsStyle="primary" bsSize="small" onClick={()=>this.setState({showModal: true})}>New note</Button><br/><br/>
                 <div id="mainNote">
-                <NoteList notes={this.state.notes} remove={this.removeNote} />
-                <Button id="newNoteBtn"bsStyle="primary" bsSize="small" onClick={()=>this.setState({showModal: true})}>New note</Button><br/><br/>
-
-                <SmallModal show={this.state.showModal} onHide={modalClose} newNote={this.newNote} onSubmit={modalClose}/>
-            </div>
+                    <NoteList notes={this.state.notes} remove={this.removeNote} />
+                    <SmallModal show={this.state.showModal} onHide={modalClose} newNote={this.newNote} onSubmit={modalClose}/>
+                </div>
             </div>
         );
     }

@@ -5,12 +5,12 @@
     border: solid grey 1px;
     display: flex;
     flex-flow: row;
-    justify-content: space-around;
+    justify-content: space-between;
 
 }
 
 #mainNote {
-    height: 400px;
+    height: 450px;
     overflow-y: scroll;
 }
 
@@ -39,8 +39,7 @@
 }
 
 .noteBtn {
-    margin: auto;
-    margin-right: 0%;
+    margin: auto 0 auto auto;
 }
 
 #saveBtn {
