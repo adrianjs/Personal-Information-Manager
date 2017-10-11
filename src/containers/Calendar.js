@@ -28,6 +28,10 @@ export default class Calendar extends React.Component {
         this.showCalendar = this.showCalendar.bind(this);
         this.goToCurrentMonthView = this.goToCurrentMonthView.bind(this);
 
+        var events = localStorage.getItem('savedEvents');
+        if (events) {
+            this.setState({selectedMonthEvents: JSON.parse(events)});
+        }
         this.initialiseEvents();
     }
 
@@ -130,6 +134,11 @@ export default class Calendar extends React.Component {
         return weeks;
     }
 
+    updateLocalStorage(updatedEvents) {
+        console.log("updated");
+        localStorage.setItem('savedEvents', JSON.stringify(updatedEvents));
+    }
+
     handleAdd() {
         const monthEvents = this.state.selectedMonthEvents;
         const currentSelectedDate = this.state.selectedDay;
@@ -161,6 +170,8 @@ export default class Calendar extends React.Component {
                 this.setState({
                     selectedMonthEvents: monthEvents
                 });
+                console.log(monthEvents);
+                this.updateLocalStorage(monthEvents);                
                 break;
         }
     }
@@ -184,7 +195,8 @@ export default class Calendar extends React.Component {
         this.setState({
             selectedMonthEvents: monthEvents
         });
-
+        console.log(monthEvents);
+        this.updateLocalStorage(monthEvents);
     }
 
     initialiseEvents(){

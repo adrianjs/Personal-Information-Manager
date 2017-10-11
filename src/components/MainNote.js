@@ -29,9 +29,10 @@ export class MainNote extends React.Component {
         this.updateLocalStorage(updatedNotes);
     }
 
-    removeNote(text) {
+    removeNote(element) {
+        var value = element.target.parentNode.id;
         var updatedNotes = this.state.notes;
-        updatedNotes.splice(updatedNotes.indexOf([text]), 1);
+        updatedNotes.splice(value, 1);
         this.setState({notes: updatedNotes})
         this.updateLocalStorage(updatedNotes);
     }
@@ -47,7 +48,7 @@ export class MainNote extends React.Component {
     render() {
         return (
             <div id="noteMain">
-                <div class="mainTitles"><h1>Notes</h1></div>
+                <div className="mainTitles"><h1>Notes</h1></div>
                 <NoteList notes={this.state.notes} remove={this.removeNote} />
                 <Button id="newNoteBtn"bsStyle="primary" bsSize="small" onClick={this.open}>New note</Button><br/><br/>
                 <NewNote newNote={this.newNote} />

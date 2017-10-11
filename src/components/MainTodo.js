@@ -24,9 +24,10 @@ export class MainTodo extends React.Component {
         this.updateLocalStorage(updatedTasks);
     }
 
-    removeTask(text) {
+    removeTask(element) {
+        var value = element.target.parentNode.id;
         var updatedTasks = this.state.tasks;
-        updatedTasks.splice(updatedTasks.indexOf(text), 1);
+        updatedTasks.splice(value, 1);
         this.setState({tasks: updatedTasks})
         this.updateLocalStorage(updatedTasks);
     }
@@ -34,7 +35,7 @@ export class MainTodo extends React.Component {
     render() {
         return (
             <div id="todoMain">
-                <h1 class="mainTitles">Todo</h1>
+                <h1 className="mainTitles">Todo</h1>
                 <AddTask updateList={this.updateList} />
                 <AddList tasks={this.state.tasks} remove={this.removeTask} />
             </div>
