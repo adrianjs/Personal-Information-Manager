@@ -14,19 +14,19 @@ export default class Events extends React.Component {
                     className="event-container"
                     onClick={() => removeEvent(i)}
                 >
-                    <CSSTransitionGroup
-                        component="div"
-                        className="animated-time"
-                        transitionName="time"
-                        transitionAppear={true}
-                        transitionAppearTimeout={500}
-                        transitionEnterTimeout={500}
-                        transitionLeaveTimeout={500}
-                    >
-                        <div className="event-time event-attribute">
-                            {event.date.format("HH:mm")}
-                        </div>
-                    </CSSTransitionGroup>
+                    {/*<CSSTransitionGroup*/}
+                        {/*component="div"*/}
+                        {/*className="animated-time"*/}
+                        {/*transitionName="time"*/}
+                        {/*transitionAppear={true}*/}
+                        {/*transitionAppearTimeout={500}*/}
+                        {/*transitionEnterTimeout={500}*/}
+                        {/*transitionLeaveTimeout={500}*/}
+                    {/*>*/}
+                        {/*<div className="event-time event-attribute">*/}
+                            {/*{event.date.format("HH:mm")}*/}
+                        {/*</div>*/}
+                    {/*</CSSTransitionGroup>*/}
                     <CSSTransitionGroup
                         component="div"
                         className="animated-title"
