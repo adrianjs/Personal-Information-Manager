@@ -1,15 +1,14 @@
 .calendar-rectangle {
-    width: 300px;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
     color: #888888;
     font-size: 1em;
     font-family: "Fira Code", sans-serif;
     overflow: hidden;
-    /*
+    
     display: flex;
     align-items: flex-start;
-    */
 
 }
 
@@ -20,17 +19,20 @@
 }
 
 .calendar-content {
-    /*
+    /*Kan trolig slettes.
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-     Vurder å ta denne tilbake
-    /*
+    
+    
     display: flex;
-    flex-wrap: wrap;
+    align-items: flex-start;
+
     */
+    width: 100%;
+    height: 300px;
 }
 
 .main-calendar {
@@ -254,15 +256,15 @@
 }
 
 
-@media (min-width: 576px){
+@media (max-width: 576px){
     .calendar-rectangle {
-        width: 300px;
+        font-size: 0.7em;
     }
 }
 
 @media (min-width: 768px){
     .calendar-rectangle {
-        width: 300px;
+
         font-size: 1em;
     }
 }
