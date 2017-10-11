@@ -1,8 +1,27 @@
-.Home .lander {
+
+.flexContainer {
+    display: flex;
+    flex-direction: row;
+    /*background-color: blue;*/
+    margin: auto;
 
 }
+
 
 .Home .lander h1 {
     font-family: "Fira Code", sans-serif;
     font-weight: 600;
+}
+
+.Home .lander p {
+    color: #999;
+}
+
+.mainTitles {
+    color: black;
+    text-align: center;
+  }
+
+#flexCalendar{
+    background-color: red;
 }
