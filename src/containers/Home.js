@@ -24,6 +24,13 @@ if (tasks) {
     taskList = JSON.parse(tasks);
 }
 
+var eventList = [];
+var events = localStorage.getItem('savedEvents');
+if (eventList) {
+    eventList = JSON.parse(events);
+}
+
+console.log(Math.floor((Math.random() * 50) + 1));
 
 export default class Home extends React.Component {
     render(){
@@ -36,7 +43,7 @@ export default class Home extends React.Component {
                             <Col xs={6} md={4}>
                             <h1>Calendar</h1>
                             <div className="calendar-rectangle">
-                                <div className="calendar-content"><Calendar /></div>
+                                <div className="calendar-content"><Calendar events={eventList}/></div>
                             </div>
                             </Col>
                             <Col xs={6} md={4}>

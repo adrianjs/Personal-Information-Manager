@@ -27,11 +27,7 @@ export default class Calendar extends React.Component {
         this.addEvent = this.addEvent.bind(this);
         this.showCalendar = this.showCalendar.bind(this);
         this.goToCurrentMonthView = this.goToCurrentMonthView.bind(this);
-
-        var events = localStorage.getItem('savedEvents');
-        if (events) {
-            this.setState({selectedMonthEvents: JSON.parse(events)});
-        }
+        this.updateLocalStorage = this.updateLocalStorage.bind(this);
         this.initialiseEvents();
     }
 
@@ -266,12 +262,22 @@ export default class Calendar extends React.Component {
         allEvents.push(event1, event2, event3, event4, event5, event6,
             event7, event8, event9, event10);
 
+        
         for (let i = 0; i < allEvents.length; i++){
             monthEvents.push(allEvents[i]);
         }
 
+        if (this.props.events != null) {
+            for (let i = 10; i < this.props.events.length; i++){
+                this.props.events[i].date = moment().startOf("day").subtract(2, "d").add(16, "h");
+                monthEvents.push(this.props.events[i]);
+            }
+        }
+        console.log(monthEvents);
+        console.log(this.props.events);
+        console.log(this.state.selectedMonthEvents);
         this.setState({
-            selectedMonthEvents: monthEvents
+            selectedMonthEvents: this.props.events
         });
     }
 
