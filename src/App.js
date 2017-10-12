@@ -1,21 +1,18 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import { Navbar } from 'react-bootstrap';
+import { withRouter } from 'react-router-dom';
 import Routes from './Routes';
 import './components/css/App.css';
+import { AppBar} from 'material-ui';
+import {FileFolder} from "material-ui/svg-icons/index";
 
 class App extends Component {
   render() {
     return (
       <div className="App container">
-        <Navbar fluid>
-          <Navbar.Header>
-            <Navbar.Brand>
-              <Link to="/">Your Personal Manager</Link>
-            </Navbar.Brand>
-            <Navbar.Toggle />
-          </Navbar.Header>
-        </Navbar>
+          <AppBar
+              title="Your Personal Manager"
+              iconElementLeft={<FileFolder style={{color: 'white', marginTop: '10px'}} /> }
+          />
         <Routes />
       </div>
     );
