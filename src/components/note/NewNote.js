@@ -15,9 +15,9 @@ export default class NewNote extends React.Component {
         this.handleTextChange = this.handleTextChange.bind(this);
     }
 
-    // validateForm() {
-    //     return (this.state.noteTitle.length > 0 && this.state.noteText.length > 0);
-    // }
+    validateForm() {
+        return (this.state.noteTitle.length > 0 && this.state.noteText.length > 0);
+    }
 
     handleTitleChange = event => {
         this.setState({ noteTitle: event.target.value });
@@ -81,7 +81,7 @@ export default class NewNote extends React.Component {
                     label="Submit"
                     primary={true}
                     type="submit"
-                    // disabled={!this.validateForm()}
+                    disabled={!this.validateForm()}
                 />
             </form>
         );
