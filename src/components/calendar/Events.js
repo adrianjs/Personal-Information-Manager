@@ -1,6 +1,6 @@
 import React from 'react';
-import {Button} from 'react-bootstrap';
 import { CSSTransitionGroup } from 'react-transition-group';
+import {RaisedButton} from "material-ui";
 
 export default class Events extends React.Component {
     render(){
@@ -38,7 +38,7 @@ export default class Events extends React.Component {
                         transitionLeaveTimeout={500}
                     >
                         <div className="event-title event-attribute">
-                            <Button bsSize="small" bsStyle="danger" onClick={() => removeEvent(i)}>Delete</Button>
+                            <RaisedButton secondary={true} onClick={() => removeEvent(i)}>Delete</RaisedButton>
                         </div>
                     </CSSTransitionGroup>
                 </div>

@@ -203,7 +203,7 @@ export default class Calendar extends React.Component {
         let allEvents = [];
 
         let event1 = {
-            title: "Press the Add button and enter a name for your event. P.S you can delete me by pressing me!",
+            title: "Press the Add button and enter a name for your event. P.S you can delete me by pressing the button!",
             date: moment(),
             dynamic: false
         };

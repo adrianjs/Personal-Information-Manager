@@ -42,7 +42,7 @@
     margin: auto 0 auto auto;
 }
 
-#saveBtn {
+.saveBtn {
     display: flex;
     margin-top: 0;
     justify-content: center;

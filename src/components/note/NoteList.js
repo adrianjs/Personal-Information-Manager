@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
+import {RaisedButton} from "material-ui";
 
 export default class NoteList extends React.Component {
     render() {
@@ -10,7 +10,7 @@ export default class NoteList extends React.Component {
                     <span className="noteText">{element[1]}</span><br/>
                     <span className="notePrior">{element[2]} priority</span>
                 </div>
-                <Button className="noteBtn" bsStyle="danger" bsSize="small" onClick={this.props.remove}>Delete</Button><br/>
+                <RaisedButton className="noteBtn" secondary={true} onClick={this.props.remove}>Delete</RaisedButton><br/>
             </div>
         }, this);
         return (

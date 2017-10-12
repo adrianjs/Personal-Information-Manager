@@ -1,20 +1,20 @@
 import React from 'react';
 import NoteList from '../components/note/NoteList';
-import { Button } from 'react-bootstrap';
-import SmallModal from "../components/calendar/SmallModal";
 import '../components/css/Note.css';
+import {Dialog, RaisedButton} from "material-ui";
+import NewNote from "../components/note/NewNote";
 
 export class MainNote extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             notes: props.notes,
-            showModal: false
+            open: false
         };
         this.newNote = this.newNote.bind(this);
         this.removeNote = this.removeNote.bind(this);
-        this.close = this.close.bind(this);
-        this.open = this.open.bind(this);
+        this.handleClose = this.handleClose.bind(this);
+        this.handleOpen = this.handleOpen.bind(this);
     }
 
     updateLocalStorage(updatedNotes) {
@@ -34,27 +34,44 @@ export class MainNote extends React.Component {
         var value = element.target.parentNode.id;
         var updatedNotes = this.state.notes;
         updatedNotes.splice(value, 1);
-        this.setState({notes: updatedNotes})
+        this.setState({notes: updatedNotes});
         this.updateLocalStorage(updatedNotes);
     }
 
-    close() {
-        this.setState({ showModal: false });
-    }
+    handleClose = () => {
+        this.setState({ open: false });
+    };
 
-    open() {
-        this.setState({ showModal: true });
-    }
+    handleOpen = () => {
+        this.setState({ open: true });
+    };
 
     render() {
-        let modalClose = () => this.setState({ showModal: false });
+        const actions = [
+            <RaisedButton
+                label="Close"
+                primary={true}
+                onClick={this.handleClose}
+            />
+        ];
+
         return (
             <div>
                 <div className="mainTitles"><h1>Notes</h1></div>
-                <Button block bsStyle="primary" bsSize="small" onClick={()=>this.setState({showModal: true})}>New note</Button><br/><br/>
+                <RaisedButton primary={true} fullWidth={true} onClick={this.handleOpen}>New note</RaisedButton><br/><br/>
                 <div id="mainNote">
                     <NoteList notes={this.state.notes} remove={this.removeNote} />
-                    <SmallModal show={this.state.showModal} onHide={modalClose} newNote={this.newNote} onSubmit={modalClose}/>
+                    <div onSubmit={this.handleClose}>
+                        <Dialog
+                            title="New Note"
+                            actions={actions}
+                            modal={false}
+                            open={this.state.open}
+                            onRequestClose={this.handleClose}
+                        >
+                            <NewNote newNote={this.newNote} handleClose={this.handleClose}/>
+                        </Dialog>
+                    </div>
                 </div>
             </div>
         );

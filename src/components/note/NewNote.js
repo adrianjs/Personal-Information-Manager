@@ -1,28 +1,30 @@
 import React from 'react';
-import {
-    FormGroup, FormControl, ControlLabel, Radio, ButtonToolbar
-} from 'react-bootstrap';
-import LoaderButton from './LoaderButton';
 import '../css/Note.css';
+import {RadioButton, RadioButtonGroup, RaisedButton, TextField} from "material-ui";
 
 export default class NewNote extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isLoading: null,
             noteTitle: "",
             noteText: "",
             notePri: "Low"
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleTitleChange = this.handleTitleChange.bind(this);
+        this.handleTextChange = this.handleTextChange.bind(this);
     }
 
-    validateForm() {
-        return (this.state.noteTitle.length > 0 && this.state.noteText.length > 0);
-    }
+    // validateForm() {
+    //     return (this.state.noteTitle.length > 0 && this.state.noteText.length > 0);
+    // }
 
-    handleChange = event => {
-        this.setState({[event.target.id]: event.target.value});
+    handleTitleChange = event => {
+        this.setState({ noteTitle: event.target.value });
+    };
+
+    handleTextChange = event => {
+        this.setState({ noteText: event.target.value });
     };
 
     onRadioChange(value){
@@ -37,58 +39,50 @@ export default class NewNote extends React.Component {
         var value = [this.state.noteTitle, this.state.noteText, this.state.notePri];
         this.props.newNote(value);
         this.setState({
-            isLoading: null,
             noteTitle: "",
             noteText: "",
         });
+        this.props.handleClose();
     };
 
     render() {
         return (
             <form id="noteForm" onSubmit={this.handleSubmit}>
-                <FormGroup controlId="noteTitle">
-                    <ControlLabel>Title</ControlLabel>
-                    <FormControl
-                        type="text"
-                        onChange={this.handleChange}
-                        value={this.state.noteTitle}
-                        placeholder="Enter title" />
-                </FormGroup>
-                <FormGroup controlId="noteText">
-                    <ControlLabel>Text</ControlLabel>
-                    <FormControl
-                        componentClass="textarea"
-                        onChange={this.handleChange}
-                        value={this.state.noteText}
-                        placeholder="Enter text" />
-                </FormGroup>
-
-                <ControlLabel>Priority</ControlLabel>
-                <FormGroup>
-                    <Radio className="notePri" name="priority" inline onChange={(e) => this.onRadioChange("Low")} value="Low" checked={this.state.notePri === "Low"}>
-                        Low
-                    </Radio>
-                    {' '}
-                    <Radio className="notePri" name="priority" inline onChange={(e) => this.onRadioChange("Mid")} value="Mid" checked={this.state.notePri === "Mid"}>
-                        Mid
-                    </Radio>
-                    {' '}
-                    <Radio className="notePri" name="priority" inline onChange={(e) =>  this.onRadioChange("High")} value="High" checked={this.state.notePri === "High"}>
-                        High
-                    </Radio>
-                </FormGroup>
-
-                <ButtonToolbar id="saveBtn">
-                    <LoaderButton
-                        bsSize="lg"
-                        bsStyle="primary"
-                        disabled={!this.validateForm()}
-                        type="submit"
-                        isLoading={this.state.isLoading}
-                        text=" Save"
-                        loadingText=" Saving..."
+                <TextField
+                    hintText="Enter title here"
+                    floatingLabelText="Title"
+                    onChange={this.handleTitleChange}
+                    value={this.state.noteTitle}
+                /><br/><br/>
+                <TextField
+                    hintText="Enter note text here"
+                    floatingLabelText="Text"
+                    multiLine={true}
+                    rows={1}
+                    onChange={this.handleTextChange}
+                /><br/><br/>
+                <RadioButtonGroup name="priority" defaultSelected="Low" onChange={(e) => this.onRadioChange(e.target.value)}>
+                    <RadioButton
+                        value="Low"
+                        label="Low"
                     />
-                </ButtonToolbar>
+                    <RadioButton
+                        value="Med"
+                        label="Med"
+                    />
+                    <RadioButton
+                        value="High"
+                        label="High"
+                    />
+                </RadioButtonGroup>
+
+                <RaisedButton
+                    className="saveBtn"
+                    label="Submit"
+                    primary={true}
+                    type="submit"
+                    // disabled={!this.validateForm()}
+                />
             </form>
         );
     }

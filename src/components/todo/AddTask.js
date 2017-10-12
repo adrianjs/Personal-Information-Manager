@@ -1,13 +1,12 @@
 import React from 'react';
-import {
-    FormGroup, FormControl
-} from 'react-bootstrap';
+import {TextField} from "material-ui";
 
 export class AddTask extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {todoText: ""}
+        this.state = {todoText: ""};
         this.submitted = this.submitted.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
     //prevents refreshing of window and submits the text from the form to the list
@@ -18,19 +17,18 @@ export class AddTask extends React.Component {
     }
 
     handleChange = event => {
-        this.setState({[event.target.id]: event.target.value});
+        this.setState({todoText: event.target.value});
     };
 
     render() {
         return (
             <form id="todoForm" onSubmit={this.submitted}>
-                <FormGroup controlId="todoText">
-                <FormControl
-                    type="text"
-                    onChange={this.handleChange}
+                <TextField
+                    hintText="Hit enter to add"
+                    onChange={(e) => this.handleChange(e, "todo")}
                     value={this.state.todoText}
-                    placeholder="Hit enter to add" />
-                </FormGroup>
+                    id="todo"
+                />
             </form>
         );
     }
