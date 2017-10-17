@@ -4,7 +4,7 @@ import {View, Text, LayoutAnimation, Platform, UIManager, StyleSheet, TouchableH
 import Events from './Events'
 import DayNames from "./DayNames";
 import Week from "./Week";
-import { Icons } from 'react-native-fontawesome';
+import FontAwesome, { Icons } from 'react-native-fontawesome';
 
 export const styles = StyleSheet.create({
     row: {
@@ -35,8 +35,7 @@ export const styles = StyleSheet.create({
     titleHeader: {
         width: '100%',
         height: '70%',
-        whiteSpace: 'nowrap',
-        fontSize: '1.2em',
+        fontSize: 16,
         backgroundColor: '#ebe9e9'
     },
     headerText: {
@@ -46,10 +45,9 @@ export const styles = StyleSheet.create({
     },
     todayLabel: {
         flex: 1,
-        fontSize: '0.8em'
+        fontSize: 8
     },
     todayLabelHover: {
-        cursor: 'pointer',
         color: '#656565',
         backgroundColor: '#fff'
     },
@@ -80,7 +78,7 @@ export const styles = StyleSheet.create({
     daysContainer: {
         width: '100%',
         height: '70%',
-        background: '#fff',
+        backgroundColor: '#fff',
         padding: '0 20px 0 20px'
     },
     week: {
@@ -91,7 +89,7 @@ export const styles = StyleSheet.create({
         width: '100%',
         height: '70%',
         backgroundColor: '#fff',
-        fontSize: '1.2em'
+        fontSize: 12
     },
     eventContainer: {
         width: '100%',
@@ -99,7 +97,6 @@ export const styles = StyleSheet.create({
         display: 'flex'
     },
     eventContainerHover: {
-        cursor: 'pointer'
     },
     animatedBtn: {
         width: '30%'
@@ -113,12 +110,10 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         overflow: 'hidden',
-        boxSizing: 'border-box',
         padding: 0
     },
     arrowHover: {
         backgroundColor: '#fff',
-        cursor: 'pointer',
         color: '#656565',
     },
     day: {
@@ -134,12 +129,8 @@ export const styles = StyleSheet.create({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        border: '1px solid #fff',
-        boxSizing: 'border-box',
-        borderRadius: '50%'
     },
     dayHover: {
-        cursor: 'default',
         backgroundColor: '#656565',
         color: '#fff'
     },
@@ -149,15 +140,10 @@ export const styles = StyleSheet.create({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        border: '1px solid #f51a1a',
-        boxSizing: 'border-box',
-        borderRadius: '50%'
     },
     todayHover: {
-        cursor: 'default',
         backgroundColor: '#656565',
         color: '#fff',
-        border: '1px solid #f51a1a',
         fontWeight: 'bold'
     },
     dayWithEvent: {
@@ -190,10 +176,6 @@ export default class Calendar extends React.Component {
         this.showCalendar = this.showCalendar.bind(this);
         this.goToCurrentMonthView = this.goToCurrentMonthView.bind(this);
 
-        var events = localStorage.getItem('savedEvents');
-        if (events) {
-            this.setState({selectedMonthEvents: JSON.parse(events)});
-        }
         this.initialiseEvents();
     }
 
