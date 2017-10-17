@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import MainTodo from './components/MainTodo'
+import MainTodo from './components/todo/MainTodo'
 
 export default class App extends React.Component {
   render() {
