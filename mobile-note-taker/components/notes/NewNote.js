@@ -1,6 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, TextInput, Form } from 'react-native';
-import { RadioButton, RadioButtonGroup } from "react-native-material-ui";
+import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
+
+var radio_props = [
+    {label: 'Low', value: "Low" },
+    {label: 'Mid', value: "Mid" },
+    {label: 'High', value: "High" }
+  ];
 
 export default class NewNote extends React.Component {
     constructor(props) {
@@ -61,6 +67,16 @@ export default class NewNote extends React.Component {
                     multiline = {true}
                     onChange={(e) => this.handleTextChange(e)}
                     value={this.state.noteText}
+                />
+
+                <RadioForm
+                    radio_props={radio_props}
+                    initial={0}
+                    formHorizontal={false}
+                    labelHorizontal={true}
+                    buttonColor={'#2196f3'}
+                    animation={true}
+                    onPress={(value) => {this.setState({notePri:value})}}
                 />
 
                 <Button
