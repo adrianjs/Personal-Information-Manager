@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
-import {RadioButton, RadioButtonGroup, RaisedButton, TextField} from "material-ui-native";
+import { StyleSheet, Text, View, Button, TextInput, Form } from 'react-native';
+import { RadioButton, RadioButtonGroup } from "react-native-material-ui";
 
 export default class NewNote extends React.Component {
     constructor(props) {
@@ -20,11 +20,11 @@ export default class NewNote extends React.Component {
     }
 
     handleTitleChange = event => {
-        this.setState({ noteTitle: event.target.value });
+        this.setState({ noteTitle: event.nativeEvent.text });
     };
 
     handleTextChange = event => {
-        this.setState({ noteText: event.target.value });
+        this.setState({ noteText: event.nativeEvent.text });
     };
 
     onRadioChange(value){
@@ -33,6 +33,9 @@ export default class NewNote extends React.Component {
         });
     }
 
+    validateForm() {
+        return (this.state.noteTitle.length > 0 && this.state.noteText.length > 0);
+    }
 
     handleSubmit(event) {
         event.preventDefault();
@@ -42,48 +45,30 @@ export default class NewNote extends React.Component {
             noteTitle: "",
             noteText: "",
         });
-        this.props.handleClose();
     };
 
     render() {
         return (
-            <Form id="noteForm" onSubmit={this.handleSubmit}>
-                <TextField
-                    hintText="Enter title here"
-                    floatingLabelText="Title"
-                    onChange={this.handleTitleChange}
+            <View>
+                <Text>Add a new note:</Text>
+                <TextInput
+                    style={{height: 40, width: 180, borderColor: 'gray', borderWidth: 1}}
+                    onChange={(e) => this.handleTitleChange(e)}
                     value={this.state.noteTitle}
                 />
-                <TextField
-                    hintText="Enter note text here"
-                    floatingLabelText="Text"
-                    multiLine={true}
-                    rows={1}
-                    onChange={this.handleTextChange}
+                <TextInput
+                    style={{height: 80, width: 180, borderColor: 'gray', borderWidth: 1}}
+                    multiline = {true}
+                    onChange={(e) => this.handleTextChange(e)}
+                    value={this.state.noteText}
                 />
-                <RadioButtonGroup name="priority" defaultSelected="Low" onChange={(e) => this.onRadioChange(e.target.value)}>
-                    <RadioButton
-                        value="Low"
-                        label="Low"
-                    />
-                    <RadioButton
-                        value="Med"
-                        label="Med"
-                    />
-                    <RadioButton
-                        value="High"
-                        label="High"
-                    />
-                </RadioButtonGroup>
 
                 <Button
-                    className="saveBtn"
-                    title="Submit"
-                    primary={true}
-                    type="submit"
                     disabled={!this.validateForm()}
+                    title="Submit"
+                    onPress={(e) => this.handleSubmit(e)}
                 />
-            </Form>
+            </View>
         );
     }
 }
