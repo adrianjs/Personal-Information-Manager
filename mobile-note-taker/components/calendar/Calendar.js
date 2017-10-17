@@ -1,9 +1,173 @@
 import React from 'react';
 import moment from 'moment';
-import Events from '../components/calendar/Events'
-import DayNames from "../components/calendar/DayNames";
-import '../components/css/Calendar.css';
-import Week from "../components/calendar/Week";
+import {View, Text, LayoutAnimation, Platform, UIManager, StyleSheet, TouchableHighlight} from 'react-native';
+import Events from './Events'
+import DayNames from "./DayNames";
+import Week from "./Week";
+import { Icons } from 'react-native-fontawesome';
+
+export const styles = StyleSheet.create({
+    row: {
+        display: 'flex',
+        justifyContent: 'center'
+    },
+    box: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flex: 1,
+        height: '100%',
+    },
+    mainCalendar: {
+        height: '100%',
+        display: 'flex',
+        flexWrap: 'wrap'
+    },
+    calendarHeader: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        width: '100%',
+        height: '30%',
+        color: 'black',
+        justifyContent: 'center',
+        alignContent: 'center'
+    },
+    titleHeader: {
+        width: '100%',
+        height: '70%',
+        whiteSpace: 'nowrap',
+        fontSize: '1.2em',
+        backgroundColor: '#ebe9e9'
+    },
+    headerText: {
+        flex: 5,
+        display: 'flex',
+        height: '100%'
+    },
+    todayLabel: {
+        flex: 1,
+        fontSize: '0.8em'
+    },
+    todayLabelHover: {
+        cursor: 'pointer',
+        color: '#656565',
+        backgroundColor: '#fff'
+    },
+    monthLabel: {
+        flex: 3
+    },
+    daysHeader: {
+        width: '100%',
+        height: '30%',
+        backgroundColor: '#bebebe'
+    },
+    buttonContainer: {
+        width: '100%',
+        height: '30%',
+        backgroundColor: '#d8d8d8'
+    },
+    eventButton: {
+        flexGrow: 1,
+        display: 'flex',
+        height: '100%',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    eventButtonHover: {
+        backgroundColor: '#fff',
+        color: '#656565'
+    },
+    daysContainer: {
+        width: '100%',
+        height: '70%',
+        background: '#fff',
+        padding: '0 20px 0 20px'
+    },
+    week: {
+        height: '15%'
+    },
+    dayEvents: {
+        position: 'relative',
+        width: '100%',
+        height: '70%',
+        backgroundColor: '#fff',
+        fontSize: '1.2em'
+    },
+    eventContainer: {
+        width: '100%',
+        textAlign: 'center',
+        display: 'flex'
+    },
+    eventContainerHover: {
+        cursor: 'pointer'
+    },
+    animatedBtn: {
+        width: '30%'
+    },
+    animatedTitle:{
+        width: '70%'
+    },
+    eventAttribute: {
+        height: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        overflow: 'hidden',
+        boxSizing: 'border-box',
+        padding: 0
+    },
+    arrowHover: {
+        backgroundColor: '#fff',
+        cursor: 'pointer',
+        color: '#656565',
+    },
+    day: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flex: 1,
+        height: '100%'
+    },
+    dayNumber: {
+        width: '80%',
+        height: '90%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        border: '1px solid #fff',
+        boxSizing: 'border-box',
+        borderRadius: '50%'
+    },
+    dayHover: {
+        cursor: 'default',
+        backgroundColor: '#656565',
+        color: '#fff'
+    },
+    today: {
+        width: '80%',
+        height: '90%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        border: '1px solid #f51a1a',
+        boxSizing: 'border-box',
+        borderRadius: '50%'
+    },
+    todayHover: {
+        cursor: 'default',
+        backgroundColor: '#656565',
+        color: '#fff',
+        border: '1px solid #f51a1a',
+        fontWeight: 'bold'
+    },
+    dayWithEvent: {
+        color: '#656565',
+        fontWeight: 'bold'
+    },
+    differentMonth: {
+        opacity: 0.5
+    }
+});
 
 
 export default class Calendar extends React.Component {
@@ -16,6 +180,9 @@ export default class Calendar extends React.Component {
             selectedMonthEvents: [],
             showEvents: false
         };
+
+        if (Platform.OS === 'android'){
+            UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);        }
 
         this.previous = this.previous.bind(this);
         this.next = this.next.bind(this);
@@ -46,6 +213,10 @@ export default class Calendar extends React.Component {
         });
     }
 
+    componentWillUpdate(){
+        LayoutAnimation.easeInEaseOut();
+    }
+
     select(day){
         this.setState({
           selectedMonth: day.date,
@@ -73,9 +244,11 @@ export default class Calendar extends React.Component {
         const currentMonthView = this.state.selectedMonth;
 
         return (
-            <span className="box month-label">
-                {currentMonthView.format("MMMM YYYY")}
-            </span>
+            <View style={[styles.monthLabel, styles.box]}>
+                <Text>
+                    {currentMonthView.format("MMMM YYYY")}
+                </Text>
+            </View>
         );
     }
 
@@ -83,17 +256,23 @@ export default class Calendar extends React.Component {
         const currentSelectedDay = this.state.selectedDay;
 
         return (
-            <span className="box month-label">
-                {currentSelectedDay.format("DD MMMM YYYY")}
-            </span>
+            <View style={[styles.monthLabel, styles.box]}>
+                <Text>
+                    {currentSelectedDay.format("DD MMMM YYYY")}
+                </Text>
+            </View>
         );
     }
 
     renderTodayLabel(){
         return(
-            <span className="box today-label" onClick={this.goToCurrentMonthView}>
-                Today
-            </span>
+            <TouchableHighlight onPress={this.goToCurrentMonthView}>
+                <View className="box today-label" style={[styles.todayLabel, styles.box]}>
+                    <Text>
+                        Today
+                    </Text>
+                </View>
+            </TouchableHighlight>
         );
     }
 
@@ -274,54 +453,66 @@ export default class Calendar extends React.Component {
 
         if (showEvents) {
             return (
-                <section className="main-calendar">
-                    <header className="calendar-header">
-                        <div className="row title-header">
+                <View style={styles.mainCalendar}>
+                    <View style={styles.calendarHeader}>
+                        <View style={[styles.titleHeader, styles.row]}>
                             {this.renderDayLabel()}
-                        </div>
-                        <div className="row button-container">
-                            <i
-                                className="box arrow fa fa-angle-left"
-                                onClick={this.showCalendar}
-                            />
-                            <i
-                                className="box event-button fa fa-plus-square"
-                                onClick={this.addEvent}
-                                />
-                        </div>
-                    </header>
+                        </View>
+                        <View style={[styles.buttonContainer, styles.row]}>
+                            <TouchableHighlight onPress={this.showCalendar}>
+                                <Text>
+                                    <FontAwesome>
+                                        {Icons.angleLeft}
+                                    </FontAwesome>
+                                </Text>
+                            </TouchableHighlight>
+                            <TouchableHighlight onPress={this.addEvent}>
+                                <Text>
+                                    <FontAwesome>
+                                        {Icons.plusSquare}
+                                    </FontAwesome>
+                                </Text>
+                            </TouchableHighlight>
+                        </View>
+                    </View>
                     <Events
                         selectedMonth={this.state.selectedMonth}
                         selectedDay={this.state.selectedDay}
                         selectedMonthEvents={this.state.selectedMonthEvents}
                         removeEvent={i => this.removeEvent(i)}
                     />
-                </section>
+                </View>
             );
         } else {
             return (
-                <section className="main-calendar">
-                    <header className="calendar-header">
-                        <div className="row title-header">
-                            <i
-                                className="box arrow fa fa-angle-left"
-                                onClick={this.previous}
-                            />
-                            <div className="box header-text">
+                <View style={styles.mainCalendar}>
+                    <View style={styles.calendarHeader}>
+                        <View style={[styles.titleHeader, styles.row]}>
+                            <TouchableHighlight onPress={this.previous}>
+                                <Text onPress={this.previous}>
+                                    <FontAwesome>
+                                        {Icons.angleLeft}
+                                    </FontAwesome>
+                                </Text>
+                            </TouchableHighlight>
+                            <View style={[styles.headerText, styles.box]}>
                                 {this.renderTodayLabel()}
                                 {this.renderMonthLabel()}
-                            </div>
-                            <i
-                                className="box arrow fa fa-angle-right"
-                                onClick={this.next}
-                            />
-                        </div>
+                            </View>
+                            <TouchableHighlight onPress={this.next}>
+                                <Text>
+                                    <FontAwesome>
+                                        {Icons.angleRight}
+                                    </FontAwesome>
+                                </Text>
+                            </TouchableHighlight>
+                        </View>
                         <DayNames />
-                    </header>
-                    <div className="days-container">
+                    </View>
+                    <View style={styles.daysContainer}>
                         {this.renderWeeks()}
-                    </div>
-                </section>
+                    </View>
+                </View>
             );
         }
     }
