@@ -72,7 +72,7 @@ export default class NewNote extends React.Component {
                 <RadioForm
                     radio_props={radio_props}
                     initial={0}
-                    formHorizontal={false}
+                    formHorizontal={true}
                     labelHorizontal={true}
                     buttonColor={'#2196f3'}
                     animation={true}
