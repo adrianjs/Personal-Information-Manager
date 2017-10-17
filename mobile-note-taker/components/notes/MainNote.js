@@ -25,7 +25,7 @@ export default class MainNote extends React.Component {
 
     updateLocalStorage(updatedNotes) {
         console.log("updated");
-        localStorage.setItem('savedNotes', JSON.stringify(updatedNotes));
+        AsyncStorage.setItem('savedNotes', JSON.stringify(updatedNotes));
     }
 
     //this.updateLocalStorage(updatedTasks) updates the local storage every time a task gets added or removed
