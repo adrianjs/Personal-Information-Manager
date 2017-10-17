@@ -6,7 +6,7 @@ import DayNames from "./DayNames";
 import Week from "./Week";
 import { Icons } from 'react-native-fontawesome';
 
-export const styles = StyleSheet.create({
+const styles = StyleSheet.create({
     row: {
         display: 'flex',
         justifyContent: 'center'
@@ -245,9 +245,7 @@ export default class Calendar extends React.Component {
 
         return (
             <View style={[styles.monthLabel, styles.box]}>
-                <Text>
-                    {currentMonthView.format("MMMM YYYY")}
-                </Text>
+                {currentMonthView.format("MMMM YYYY")}
             </View>
         );
     }
@@ -256,23 +254,17 @@ export default class Calendar extends React.Component {
         const currentSelectedDay = this.state.selectedDay;
 
         return (
-            <View style={[styles.monthLabel, styles.box]}>
-                <Text>
-                    {currentSelectedDay.format("DD MMMM YYYY")}
-                </Text>
+            <View className="box month-label">
+                {currentSelectedDay.format("DD MMMM YYYY")}
             </View>
         );
     }
 
     renderTodayLabel(){
         return(
-            <TouchableHighlight onPress={this.goToCurrentMonthView}>
-                <View className="box today-label" style={[styles.todayLabel, styles.box]}>
-                    <Text>
-                        Today
-                    </Text>
-                </View>
-            </TouchableHighlight>
+            <View className="box today-label" onClick={this.goToCurrentMonthView}>
+                Today
+            </View>
         );
     }
 
