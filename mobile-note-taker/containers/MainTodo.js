@@ -72,14 +72,12 @@ export default class MainTodo extends React.Component {
             return <Text>Loading</Text>
         } else {
             return (
-                <View>
-                    <View style={styles.todoTitle}><Text style={styles.todoTitleText} className="mainTitles">Todo</Text></View>
-                    <View>
-                        <AddTask updateList={this.updateList} />
-                        <ScrollView style={styles.contentContainer}>
-                            <AddList tasks={this.state.tasks} remove={this.removeTask}/>
-                        </ScrollView>   
-                    </View>
+                <View style={styles.container}>
+                    <View style={styles.todoTitle}><Text style={styles.todoTitleText} className="mainTitles">Todo-list</Text></View>
+                    <AddTask updateList={this.updateList} />
+                    <ScrollView style={styles.contentContainer}>
+                        <AddList tasks={this.state.tasks} remove={this.removeTask}/>
+                    </ScrollView>
                 </View>
             );
         }
@@ -87,21 +85,22 @@ export default class MainTodo extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    container: {
+        width: 500,
+        alignItems: "center",
+    },
+
     todoTitle: {
-        
+        marginTop: 30,
     },
 
-    todoText: {
-        fontSize: 20,
-    },
-
-    todoMain: {
-
+    todoTitleText: {
+        fontSize: 30,
     },
 
     contentContainer: {
          paddingHorizontal: 50,
          margin: 2,
-         height: 200,
+         height: 600,
     }
 });

@@ -8,8 +8,9 @@ export default class ScrollableCalendar extends React.Component {
                 scrollEnabled={true}
                 firstDay={1}
                 style={{
-                    borderWidth: 1,
+                    borderWidth: 0,
                     height: 350,
+                    width: 300,
                 }}
                 theme={{
                     backgroundColor: '#ffffff',

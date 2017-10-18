@@ -9,9 +9,9 @@ export default class App extends React.Component {
     constructor(){
         super();
         this.state = {
-            selectedIndex: 0,
+            selectedIndex: 1,
             currentViews: [<ScrollableCalendar />, <MainTodo />, <MainNote />],
-            currentView: <ScrollableCalendar />
+            currentView: <MainTodo />
         };
     }
 
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     },
 
     maincontainer: {
-        justifyContent: "center",
+        alignItems: "center",
         backgroundColor: "white",
         height: 600,
     },

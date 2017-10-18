@@ -25,7 +25,8 @@ export default class AddTask extends React.Component {
             <View>
                 <TextInput
                     id="todo"
-                    style={{height: 40, width: 120, borderColor: 'gray', borderWidth: 1}}
+                    style={{height: 40, width: 240, textAlign: "center"}}
+                    placeholder = "Enter task here..."
                     onChange={(e) => this.handleChange(e, "todo")}
                     value={this.state.todoText}
                     onSubmitEditing={(e) => this.submitted(e)}
