@@ -1,6 +1,10 @@
 import React from 'react';
 import {TextField} from "material-ui";
 
+/*
+    Component class for textfield that takes in to-dos.
+ */
+
 export class AddTask extends React.Component {
     constructor(props) {
         super(props);
@@ -16,6 +20,7 @@ export class AddTask extends React.Component {
         this.setState({todoText: ""});
     }
 
+    //Handles changing of state when typing into to-do textfield.
     handleChange = event => {
         this.setState({todoText: event.target.value});
     };

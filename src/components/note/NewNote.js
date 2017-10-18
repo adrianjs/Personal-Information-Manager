@@ -2,6 +2,11 @@ import React from 'react';
 import '../../assets/Note.css';
 import {RadioButton, RadioButtonGroup, RaisedButton, TextField} from "material-ui";
 
+/*
+    Component class for displaying textfields and radio buttons for making a new note.
+    Component is rendered inside a popup dialog.
+ */
+
 export default class NewNote extends React.Component {
     constructor(props) {
         super(props);
@@ -15,25 +20,30 @@ export default class NewNote extends React.Component {
         this.handleTextChange = this.handleTextChange.bind(this);
     }
 
+    //Simple validation. Simply checks that none of the textfields are empty
     validateForm() {
         return (this.state.noteTitle.length > 0 && this.state.noteText.length > 0);
     }
 
+    //Function for updating state in title textfield
     handleTitleChange = event => {
         this.setState({ noteTitle: event.target.value });
     };
 
+    //Function for updating state in text textfield
     handleTextChange = event => {
         this.setState({ noteText: event.target.value });
     };
 
+    //Function for updating priority using radio buttons
     onRadioChange(value){
         this.setState({
             notePri: value,
         });
     }
 
-
+    //Function for handling submit. Takes in current state and passes it to a function that saves it.
+    //Then resets state for next note.
     handleSubmit(event) {
         event.preventDefault();
         var value = [this.state.noteTitle, this.state.noteText, this.state.notePri];

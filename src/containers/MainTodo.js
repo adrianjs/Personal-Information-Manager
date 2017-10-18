@@ -3,6 +3,10 @@ import { AddTask } from '../components/todo/AddTask';
 import { AddList } from '../components/todo/AddList';
 import '../assets/ToDo.css';
 
+/*
+    Main component class for To-Dos.
+ */
+
 export class MainTodo extends React.Component {
     constructor(props) {
         super(props);

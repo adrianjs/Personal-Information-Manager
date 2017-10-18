@@ -1,6 +1,11 @@
 import React from 'react';
 import {RaisedButton} from "material-ui";
 
+/*
+    Component for displaying notes in a list on homepage.
+    Lists all information on the note, and has a delete button on each note.
+ */
+
 export default class NoteList extends React.Component {
     render() {
         var items = this.props.notes.map((element, i) => {
