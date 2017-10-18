@@ -1,0 +1,177 @@
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = undefined;
+var _jsxFileName = '/Users/baldur/Documents/it2810-webutvikling-h17-prosjekt-3-group-21/mobile-note-taker/components/todo/MainTodo.js';
+
+var _react = require('react');
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _AddTask = require('./AddTask');
+
+var _AddTask2 = babelHelpers.interopRequireDefault(_AddTask);
+
+var _AddList = require('./AddList');
+
+var _AddList2 = babelHelpers.interopRequireDefault(_AddList);
+
+var _reactNative = require('react-native');
+
+var regeneratorRuntime = require('regenerator-runtime');
+
+var taskList = ["Task 1", "Task 2", "Task 3"];
+
+var tasks = _reactNative.AsyncStorage.getItem('savedTasks');
+
+var MainTodo = function (_React$Component) {
+    babelHelpers.inherits(MainTodo, _React$Component);
+
+    function MainTodo(props) {
+        babelHelpers.classCallCheck(this, MainTodo);
+
+        var _this = babelHelpers.possibleConstructorReturn(this, (MainTodo.__proto__ || Object.getPrototypeOf(MainTodo)).call(this, props));
+
+        _this.state = {
+            tasks: taskList,
+            arrayLoaded: false
+        };
+        _this.updateList = _this.updateList.bind(_this);
+        _this.removeTask = _this.removeTask.bind(_this);
+        return _this;
+    }
+
+    babelHelpers.createClass(MainTodo, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            this.loadData().done();
+        }
+    }, {
+        key: 'loadData',
+        value: function loadData() {
+            var _this2 = this;
+
+            var array;
+            return regeneratorRuntime.async(function loadData$(_context) {
+                while (1) {
+                    switch (_context.prev = _context.next) {
+                        case 0:
+                            array = [];
+
+                            tasks.then(function (response) {
+                                console.log("response", response);
+                                return JSON.parse(response);
+                            }).then(function (data) {
+                                console.log("data", data);
+                                array = data;
+                                if (array.length > 0) {
+                                    _this2.setState({ tasks: array });
+                                    _this2.setState({ arrayLoaded: true });
+                                    console.log("states set!");
+                                } else {
+                                    _this2.setState({ tasks: taskList });
+                                    _this2.setState({ arrayLoaded: true });
+                                    console.log("array not found, using default");
+                                }
+                            });
+
+                        case 2:
+                        case 'end':
+                            return _context.stop();
+                    }
+                }
+            }, null, this);
+        }
+    }, {
+        key: 'updateLocalStorage',
+        value: function updateLocalStorage(updatedTasks) {
+            console.log("updated");
+            _reactNative.AsyncStorage.setItem('savedTasks', JSON.stringify(updatedTasks));
+        }
+    }, {
+        key: 'updateList',
+        value: function updateList(text) {
+            var updatedTasks = this.state.tasks;
+            updatedTasks.unshift(text);
+            this.setState({ tasks: updatedTasks });
+            this.updateLocalStorage(updatedTasks);
+        }
+    }, {
+        key: 'removeTask',
+        value: function removeTask(index) {
+            var updatedTasks = this.state.tasks;
+            updatedTasks.splice(index, 1);
+            this.setState({ tasks: updatedTasks });
+            this.updateLocalStorage(updatedTasks);
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this3 = this;
+
+            setTimeout(function () {
+                _this3.setState({ timePassed: true });
+            }, 2000);
+            if (!this.state.arrayLoaded) {
+                return _react2.default.createElement(
+                    _reactNative.Text,
+                    {
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 69
+                        }
+                    },
+                    'Loading'
+                );
+            } else {
+                return _react2.default.createElement(
+                    _reactNative.View,
+                    {
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 72
+                        }
+                    },
+                    _react2.default.createElement(
+                        _reactNative.View,
+                        { className: 'mainTitles', __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 73
+                            }
+                        },
+                        _react2.default.createElement(
+                            _reactNative.Text,
+                            { className: 'mainTitles', __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 73
+                                }
+                            },
+                            'Todo'
+                        )
+                    ),
+                    _react2.default.createElement(
+                        _reactNative.View,
+                        { id: 'mainTodo', __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 74
+                            }
+                        },
+                        _react2.default.createElement(_AddTask2.default, { updateList: this.updateList, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 75
+                            }
+                        }),
+                        _react2.default.createElement(_AddList2.default, { tasks: this.state.tasks, remove: this.removeTask, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 76
+                            }
+                        })
+                    )
+                );
+            }
+        }
+    }]);
+    return MainTodo;
+}(_react2.default.Component);
+
+exports.default = MainTodo;

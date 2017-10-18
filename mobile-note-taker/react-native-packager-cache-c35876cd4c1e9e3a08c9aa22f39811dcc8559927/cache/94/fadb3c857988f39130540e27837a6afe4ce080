@@ -1,0 +1,72 @@
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = undefined;
+var _jsxFileName = '/Users/baldur/Documents/it2810-webutvikling-h17-prosjekt-3-group-21/mobile-note-taker/components/todo/AddTask.js';
+
+var _react = require('react');
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require('react-native');
+
+var AddTask = function (_React$Component) {
+    babelHelpers.inherits(AddTask, _React$Component);
+
+    function AddTask(props) {
+        babelHelpers.classCallCheck(this, AddTask);
+
+        var _this = babelHelpers.possibleConstructorReturn(this, (AddTask.__proto__ || Object.getPrototypeOf(AddTask)).call(this, props));
+
+        _this.handleChange = function (event) {
+            _this.setState({ todoText: event.nativeEvent.text });
+        };
+
+        _this.state = { todoText: "", notePri: "Low" };
+        _this.submitted = _this.submitted.bind(_this);
+        _this.handleChange = _this.handleChange.bind(_this);
+        return _this;
+    }
+
+    babelHelpers.createClass(AddTask, [{
+        key: 'submitted',
+        value: function submitted(event) {
+            event.preventDefault();
+            this.props.updateList(this.state.todoText);
+            this.setState({ todoText: "" });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            return _react2.default.createElement(
+                _reactNative.View,
+                {
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 25
+                    }
+                },
+                _react2.default.createElement(_reactNative.TextInput, {
+                    id: 'todo',
+                    style: { height: 40, width: 120, borderColor: 'gray', borderWidth: 1 },
+                    onChange: function onChange(e) {
+                        return _this2.handleChange(e, "todo");
+                    },
+                    value: this.state.todoText,
+                    onSubmitEditing: function onSubmitEditing(e) {
+                        return _this2.submitted(e);
+                    },
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 26
+                    }
+                })
+            );
+        }
+    }]);
+    return AddTask;
+}(_react2.default.Component);
+
+exports.default = AddTask;
