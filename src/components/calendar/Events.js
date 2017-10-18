@@ -4,7 +4,7 @@ import {RaisedButton} from "material-ui";
 
 /*
     Component class for displaying events in a day.
-    Uses animations from CSSTransitionGroup to make it smooth and fancy.
+    Uses animations with CSSTransitionGroup to make it smooth and fancy.
     Maps events from selectedMonthEvents array.
  */
 
