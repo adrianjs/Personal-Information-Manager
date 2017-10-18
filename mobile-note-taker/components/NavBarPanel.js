@@ -1,7 +1,7 @@
 import Drawer from 'react-native-drawer';
 import React, {Component} from 'react';
-import {Text,View} from 'react-native';
-import NavBarContent from './NavBarContent.js'
+import {Text,View,StyleSheet} from 'react-native';
+import {NavBarContent} from './NavBarContent';
 
 export class NavBarPanel extends React.Component{
 
@@ -28,7 +28,6 @@ export class NavBarPanel extends React.Component{
             type="displace"
             content={<NavBarContent changeView={this.props.changeView}/>}
             ref = {(ref) => this._drawer = ref}
-            styles ={drawerStyle.layout}
             tapToClose={true}
             openDrawerOffset={0.0}
             panCloseMask={0.0}
@@ -40,7 +39,7 @@ export class NavBarPanel extends React.Component{
     }
 }
 
-const drawerStyle = StyleSheet.create({
+const style = StyleSheet.create({
     layout: {
         
     }

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text,View} from 'react-native';
+import {Text,View, StyleSheet} from 'react-native';
 
 export class ContentManager extends React.Component{
     constructor(props) {
@@ -9,7 +9,7 @@ export class ContentManager extends React.Component{
     render() {
         if(this.props.currentItem == "Calendar"){
             //Connect to main program
-            return(<Text> Woopdedoo </Text>)
+            return(<Text> kmkm </Text>)
         }
         else if(this.props.currentItem == "Notes"){
             //Connect to main program
