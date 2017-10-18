@@ -22,6 +22,7 @@ export default class MainTodo extends React.Component {
         };
         this.updateList = this.updateList.bind(this);
         this.removeTask = this.removeTask.bind(this);
+        {this.loadData}
     }
 
     //Loads locally saved data on mount
@@ -74,7 +75,6 @@ export default class MainTodo extends React.Component {
     }
 
     render() {
-        setTimeout(() => {this.setState({timePassed: true})}, 2000);
         if (!this.state.arrayLoaded) {
             return <Text>Loading</Text>
         } else {

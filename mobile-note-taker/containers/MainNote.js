@@ -25,6 +25,7 @@ export default class MainNote extends React.Component {
         };
         this.newNote = this.newNote.bind(this);
         this.removeNote = this.removeNote.bind(this);
+        {this.loadData}
     }
 
     //Loads the locally saved notes on mount
@@ -78,7 +79,6 @@ export default class MainNote extends React.Component {
     }
 
     render() {
-        setTimeout(() => {this.setState({timePassed: true})}, 2000);        
         if (!this.state.arrayLoaded) {
             return <Text>Loading</Text>
         } else {
