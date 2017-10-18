@@ -1,6 +1,6 @@
 import React from 'react';
-import NewNote from './NewNote';
-import NoteList from './NoteList';
+import NewNote from '../components/notes/NewNote';
+import NoteList from '../components/notes/NoteList';
 import { StyleSheet, Text, View, AsyncStorage, ScrollView } from 'react-native';
 
 var noteList = [["NoteTitle 1", "NoteText 1", "High"],

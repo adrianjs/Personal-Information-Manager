@@ -1,6 +1,6 @@
 import React from 'react';
-import AddTask from './AddTask';
-import AddList from './AddList';
+import AddTask from '../components/todo/AddTask';
+import AddList from '../components/todo/AddList';
 import { StyleSheet, Text, View, AsyncStorage, ScrollView } from 'react-native';
 
 //Default task list

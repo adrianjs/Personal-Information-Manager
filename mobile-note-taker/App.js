@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import MainTodo from './components/todo/MainTodo'
-import MainNote from './components/notes/MainNote'
+import MainTodo from './containers/MainTodo'
+import MainNote from './containers/MainNote'
 import SegmentedControlTab from 'react-native-segmented-control-tab'
-import ScrollableCalendar from "./components/calendar/ScrollableCalendar";
+import ScrollableCalendar from "./containers/ScrollableCalendar";
 
 export default class App extends React.Component {
     constructor(){
