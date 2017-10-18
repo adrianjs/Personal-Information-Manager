@@ -14,9 +14,9 @@ export default class App extends React.Component {
     constructor(){
         super();
         this.state = {
-            selectedIndex: 1,
+            selectedIndex: 2,
             currentViews: [<ScrollableCalendar />, <MainTodo />, <MainNote />],
-            currentView: <MainTodo />
+            currentView: <MainNote />
         };
     }
 

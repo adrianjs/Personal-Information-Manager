@@ -1,11 +1,11 @@
 import React from 'react';
-import { Text, View, Button, TextInput } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 import RadioForm from 'react-native-simple-radio-button';
 
 //Values for priority on radio buttons
 const radio_props = [
-    {label: 'Low', value: "Low" },
-    {label: 'Mid', value: "Mid" },
+    {label: 'Low      ', value: "Low" },
+    {label: 'Mid      ', value: "Mid" },
     {label: 'High', value: "High" }
 ];
 
@@ -54,31 +54,37 @@ export default class NewNote extends React.Component {
 
     render() {
         return (
-            <View>
-                <Text>Add a new note:</Text>
+            <View style={styles.container}>
                 <TextInput
-                    style={{height: 40, width: 180, borderColor: 'gray', borderWidth: 1}}
+                    style={{height: 40, width: 240, textAlign: "center"}}
+                    placeholder = "Enter title here..."
                     onChange={(e) => this.handleTitleChange(e)}
                     value={this.state.noteTitle}
                 />
+
                 <TextInput
-                    style={{height: 80, width: 180, borderColor: 'gray', borderWidth: 1}}
+                    style={{height: 80, width: 240, textAlign: "center"}}
+                    placeholder = "Enter description here..."
                     multiline = {true}
+                    blurOnSubmit = {false}
                     onChange={(e) => this.handleTextChange(e)}
                     value={this.state.noteText}
                 />
 
+                <Text style={styles.text}>Priority</Text>
+
                 <RadioForm
                     radio_props={radio_props}
                     initial={0}
+                    borderWidth={1}
                     formHorizontal={true}
-                    labelHorizontal={true}
-                    buttonColor={'#2196f3'}
+                    buttonColor={'#00bcd4'}
                     animation={false}
                     onPress={(value) => {this.setState({notePri:value})}}
                 />
 
                 <Button
+                    style={styles.btn}
                     disabled={!this.validateForm()}
                     title="Submit"
                     onPress={(e) => this.handleSubmit(e)}
@@ -87,3 +93,13 @@ export default class NewNote extends React.Component {
         );
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        marginBottom: 10,
+    },
+
+    text: {
+        textAlign: "center",
+    },
+});

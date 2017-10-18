@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 
 /*
     Component for rendering saved notes in a list.
@@ -8,13 +8,13 @@ import { Text, View, Button } from 'react-native';
 export default class NoteList extends React.Component {
     render() {
         var items = this.props.notes.map((element, i) => {
-            return <View className="note" key={i} id={i}>
-                <View className="noteContainer">
-                    <Text className="noteTitle">{element[0]}</Text>
-                    <Text className="noteText">{element[1]}</Text>
-                    <Text className="notePrior">{element[2]} priority</Text>
+            return <View style={styles.note} key={i}>
+                <View style={styles.noteText}>
+                    <Text style={styles.noteTextTitle}>{element[0]}</Text>
+                    <Text style={styles.noteTextDesc}>{element[1]}</Text>
+                    <Text style={styles.noteTextPri}>{element[2]} priority</Text>
                 </View>
-                <Button onPress={(e) => this.props.remove(i)} title="Delete" color="#ff4081" />
+                <Button style={styles.noteBtn} onPress={(e) => this.props.remove(i)} title="Delete" color="#ff4081" />
             </View>
         });
         return (
@@ -22,3 +22,37 @@ export default class NoteList extends React.Component {
         );
     }
 }
+
+const styles = StyleSheet.create({
+    note: {
+        backgroundColor: "#eeeeee",
+        padding: 5,
+        flex: 1,
+        flexDirection: "row",
+        justifyContent: "space-around",
+        marginBottom: 15,
+        width: 300,
+    },
+
+    noteText: {
+        flex: 6,
+        padding: 20,
+    },
+
+    noteTextTitle: {
+        fontSize: 15,
+    },
+
+    noteTextDesc: {
+        fontSize: 15,
+    },
+
+    noteTextPri: {
+        fontSize: 15,
+    },
+
+    noteBtn: {
+        flex: 1,
+        height: 10,
+    }
+});

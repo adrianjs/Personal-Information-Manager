@@ -83,14 +83,12 @@ export default class MainNote extends React.Component {
             return <Text>Loading</Text>
         } else {
             return (
-                <View>
-                    <View className="mainTitles"><Text>My notes</Text></View>
-                    <View id="mainNote">
-                        <ScrollView style={styles.contentContainer}>
-                            <NoteList notes={this.state.notes} remove={this.removeNote} />
-                        </ScrollView>    
-                        <NewNote newNote={this.newNote} />
-                    </View>
+                <View style={styles.container}>
+                    <View style={styles.noteTitle}><Text style={styles.noteTitleText}>My notes</Text></View>
+                    <NewNote newNote={this.newNote} />
+                    <ScrollView style={styles.contentContainer}>
+                        <NoteList notes={this.state.notes} remove={this.removeNote} />
+                    </ScrollView>    
                 </View>
             );
         }
@@ -99,9 +97,22 @@ export default class MainNote extends React.Component {
 
 //Stylesheet for the Note view
 const styles = StyleSheet.create({
+    container: {
+        width: 500,
+        alignItems: "center",
+    },
+
+    noteTitle: {
+        marginTop: 30,
+    },
+
+    noteTitleText: {
+        fontSize: 30,
+    },
+
     contentContainer: {
          paddingHorizontal: 50,
          margin: 2,
-         height: 200,
+         height: 350,
     }
 });
