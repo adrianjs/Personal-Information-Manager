@@ -101,5 +101,6 @@ const styles = StyleSheet.create({
 
     text: {
         textAlign: "center",
+        marginBottom: 5,
     },
 });

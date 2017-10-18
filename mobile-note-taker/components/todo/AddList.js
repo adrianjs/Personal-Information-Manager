@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     },
 
     todoBtn: {
-        flex: 3,
+        flex: 4,
         justifyContent: "center",
         marginRight: 5,
     }
