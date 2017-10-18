@@ -64,6 +64,9 @@ var MainTodo = function (_React$Component) {
                             }).then(function (data) {
                                 console.log("data", data);
                                 array = data;
+                                if (array == null) {
+                                    array = [];
+                                }
                                 if (array.length > 0) {
                                     _this2.setState({ tasks: array });
                                     _this2.setState({ arrayLoaded: true });
@@ -118,7 +121,7 @@ var MainTodo = function (_React$Component) {
                     {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 69
+                            lineNumber: 72
                         }
                     },
                     'Loading'
@@ -129,21 +132,21 @@ var MainTodo = function (_React$Component) {
                     {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 72
+                            lineNumber: 75
                         }
                     },
                     _react2.default.createElement(
                         _reactNative.View,
                         { className: 'mainTitles', __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 73
+                                lineNumber: 76
                             }
                         },
                         _react2.default.createElement(
                             _reactNative.Text,
                             { className: 'mainTitles', __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 73
+                                    lineNumber: 76
                                 }
                             },
                             'Todo'
@@ -153,17 +156,17 @@ var MainTodo = function (_React$Component) {
                         _reactNative.View,
                         { id: 'mainTodo', __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 74
+                                lineNumber: 77
                             }
                         },
                         _react2.default.createElement(_AddTask2.default, { updateList: this.updateList, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 75
+                                lineNumber: 78
                             }
                         }),
                         _react2.default.createElement(_AddList2.default, { tasks: this.state.tasks, remove: this.removeTask, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 76
+                                lineNumber: 79
                             }
                         })
                     )
