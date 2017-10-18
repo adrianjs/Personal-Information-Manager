@@ -7,20 +7,40 @@ import { StyleSheet, Text, View, AsyncStorage } from 'react-native';
 var taskList = ["Task 1", "Task 2", "Task 3"];
 //Getting tasks from local storage
 var tasks = AsyncStorage.getItem('savedTasks');
-var array = []
-tasks.then(function(response) {
-    return JSON.parse(response);
-}).then(function (data) {
-    array = data;
-    console.log(array);
-});
 
 export default class MainTodo extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {tasks: taskList, timePassed: false};
+        this.state = {
+            tasks: taskList,
+            arrayLoaded: false
+        };
         this.updateList = this.updateList.bind(this);
         this.removeTask = this.removeTask.bind(this);
+    }
+
+    componentDidMount() {
+        this.loadData().done()
+    }
+
+    async loadData() {
+        var array = [];
+        tasks.then((response) =>  {
+            console.log("response", response)
+            return JSON.parse(response);
+        }).then((data) =>  {
+            console.log("data", data);
+            array = data;
+            if (array.length > 0) {
+                this.setState({tasks: array});
+                this.setState({arrayLoaded: true});
+                console.log("states set!")
+            } else {
+                this.setState({tasks: taskList});
+                this.setState({arrayLoaded: true});
+                console.log("array not found, using default");
+            }
+        });
     }
 
     updateLocalStorage(updatedTasks) {
@@ -45,18 +65,18 @@ export default class MainTodo extends React.Component {
 
     render() {
         setTimeout(() => {this.setState({timePassed: true})}, 2000);
-        if (!this.state.timePassed) {
-            this.state.taskList = this.array;
+        if (!this.state.arrayLoaded) {
             return <Text>Loading</Text>
         } else {
             return (
-                <View id="todoMain">
-                    <Text className="mainTitles">Todo</Text>
-                    <AddTask updateList={this.updateList} />
-                    <AddList tasks={this.state.tasks} remove={this.removeTask}/>
+                <View>
+                    <View className="mainTitles"><Text className="mainTitles">Todo</Text></View>
+                    <View id="mainTodo">
+                        <AddTask updateList={this.updateList} />
+                        <AddList tasks={this.state.tasks} remove={this.removeTask}/>
+                    </View>
                 </View>
             );
         }
-        
     }
 }

@@ -6,7 +6,7 @@ var radio_props = [
     {label: 'Low', value: "Low" },
     {label: 'Mid', value: "Mid" },
     {label: 'High', value: "High" }
-  ];
+];
 
 export default class NewNote extends React.Component {
     constructor(props) {
@@ -75,7 +75,7 @@ export default class NewNote extends React.Component {
                     formHorizontal={true}
                     labelHorizontal={true}
                     buttonColor={'#2196f3'}
-                    animation={true}
+                    animation={false}
                     onPress={(value) => {this.setState({notePri:value})}}
                 />
 

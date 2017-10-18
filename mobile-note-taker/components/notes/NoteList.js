@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
-//import {RaisedButton} from "material-ui";
 
 export default class NoteList extends React.Component {
     render() {

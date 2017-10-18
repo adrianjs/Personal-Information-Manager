@@ -1,26 +1,48 @@
 import React from 'react';
 import NewNote from './NewNote';
 import NoteList from './NoteList';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, AsyncStorage } from 'react-native';
 
 var noteList = [["NoteTitle 1", "NoteText 1", "High"],
 ["NoteTitle 2", "NoteText 2", "Mid"],
 ["NoteTitle 3", "NoteText 3", "Low"]];
-/*//Getting tasks from local storage
-var notes = localStorage.getItem('savedNotes');
-if (notes) {
-    noteList = JSON.parse(notes);
-}*/
+//Getting notes from local storage
+var notes = AsyncStorage.getItem('savedNotes');
 
 export default class MainNote extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             notes: noteList,
-            open: false
+            open: false,
+            arrayLoaded: false
         };
         this.newNote = this.newNote.bind(this);
         this.removeNote = this.removeNote.bind(this);
+    }
+
+    componentDidMount() {
+        this.loadData().done()
+    }
+
+    async loadData() {
+        var array = [];
+        notes.then((response) =>  {
+            console.log("response", response)
+            return JSON.parse(response);
+        }).then((data) =>  {
+            console.log("data", data);
+            array = data;
+            if (array.length > 0) {
+                this.setState({notes: array});
+                this.setState({arrayLoaded: true});
+                console.log("states set!")
+            } else {
+                this.setState({notes: noteList});
+                this.setState({arrayLoaded: true});
+                console.log("array not found, using default");
+            }
+        });
     }
 
     updateLocalStorage(updatedNotes) {
@@ -33,30 +55,30 @@ export default class MainNote extends React.Component {
         var updatedNotes = this.state.notes;
         updatedNotes.unshift([text[0], text[1], text[2]]);
         this.setState({notes: updatedNotes});
-        //this.updateLocalStorage(updatedNotes);
+        this.updateLocalStorage(updatedNotes);
     }
 
     removeNote(index) {
         var updatedNotes = this.state.notes;
         updatedNotes.splice(index, 1);
         this.setState({notes: updatedNotes});
-        //this.updateLocalStorage(updatedNotes);
+        this.updateLocalStorage(updatedNotes);
     }
 
-    /* 
-    <NoteList notes={this.state.notes} remove={this.removeNote} />
-    <NewNote newNote={this.newNote} handleClose={this.handleClose}/>
-    */
-
     render() {
-        return (
-            <View>
-                <View className="mainTitles"><Text>My notes</Text></View>
-                <View id="mainNote">
-                    <NoteList notes={this.state.notes} remove={this.removeNote} />
-                    <NewNote newNote={this.newNote} />
+        setTimeout(() => {this.setState({timePassed: true})}, 2000);        
+        if (!this.state.arrayLoaded) {
+            return <Text>Loading</Text>
+        } else {
+            return (
+                <View>
+                    <View className="mainTitles"><Text>My notes</Text></View>
+                    <View id="mainNote">
+                        <NoteList notes={this.state.notes} remove={this.removeNote} />
+                        <NewNote newNote={this.newNote} />
+                    </View>
                 </View>
-            </View>
-        );
+            );
+        }
     }
 }

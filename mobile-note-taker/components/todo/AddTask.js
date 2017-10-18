@@ -1,11 +1,10 @@
 import React from 'react';
-//import { TextField } from "material-ui";
 import { StyleSheet, Text, View, Form, TextInput } from 'react-native';
 
 export default class AddTask extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {todoText: ""};
+        this.state = {todoText: "", notePri: "Low"};
         this.submitted = this.submitted.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
