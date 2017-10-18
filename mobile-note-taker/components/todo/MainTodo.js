@@ -73,8 +73,8 @@ export default class MainTodo extends React.Component {
         } else {
             return (
                 <View>
-                    <View className="mainTitles"><Text className="mainTitles">Todo</Text></View>
-                    <View id="mainTodo">
+                    <View style={styles.todoTitle}><Text style={styles.todoTitleText} className="mainTitles">Todo</Text></View>
+                    <View>
                         <AddTask updateList={this.updateList} />
                         <ScrollView style={styles.contentContainer}>
                             <AddList tasks={this.state.tasks} remove={this.removeTask}/>
@@ -87,6 +87,18 @@ export default class MainTodo extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    todoTitle: {
+        
+    },
+
+    todoText: {
+        fontSize: 20,
+    },
+
+    todoMain: {
+
+    },
+
     contentContainer: {
          paddingHorizontal: 50,
          margin: 2,

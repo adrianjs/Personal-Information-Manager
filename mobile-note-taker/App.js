@@ -25,6 +25,7 @@ export default class App extends React.Component {
     render() {
         return (
             <View>
+                <View style={styles.title}><Text style={styles.titleText}>Your Personal Manager</Text></View>
                 <View style={styles.tab}>
                     <SegmentedControlTab
                         tabsContainerStyle={styles.tabsContainerStyle}
@@ -43,15 +44,27 @@ export default class App extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    title: {
+        paddingTop: 20,
+        paddingBottom: 10,
+        height: 60,
+        backgroundColor: '#00bcd4',
+    },
+
+    titleText: {
+        fontSize: 30,
+        textAlign: "center",
+        color: "white",
+    },
+
     tab: {
-        marginTop: 20,
-        height: 80,
+        height: 50,
     },
 
     maincontainer: {
         justifyContent: "center",
-        backgroundColor: "powderblue",
-        height: 630,
+        backgroundColor: "white",
+        height: 600,
     },
 
     container: {
@@ -60,19 +73,19 @@ const styles = StyleSheet.create({
     },
 
     tabsContainerStyle: {
-        height: 80,
+        height: "100%",
     },
 
     tabStyle: {
-        backgroundColor: "skyblue",
-        borderColor: "steelblue",
+        backgroundColor: "#00bcd4",
+        borderColor: "#00bcd4",
     },
 
     activeTabStyle: {
-        backgroundColor: "steelblue",
+        backgroundColor: "#009cd4",
     },
 
     tabTextStyle: {
-        color: "black",
+        color: "white",
     },
 });

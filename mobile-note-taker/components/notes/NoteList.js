@@ -10,7 +10,7 @@ export default class NoteList extends React.Component {
                     <Text className="noteText">{element[1]}</Text>
                     <Text className="notePrior">{element[2]} priority</Text>
                 </View>
-                <Button onPress={(e) => this.props.remove(i)} title="Delete" color="#841584" />
+                <Button onPress={(e) => this.props.remove(i)} title="Delete" color="#ff4081" />
             </View>
         });
         return (

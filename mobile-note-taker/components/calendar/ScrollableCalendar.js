@@ -9,16 +9,18 @@ export default class ScrollableCalendar extends React.Component {
                 firstDay={1}
                 style={{
                     borderWidth: 1,
-                    borderColor: "steelblue",
                     height: 350,
-                    backgroundColor: "powderblue",
                 }}
                 theme={{
-                    selectedDayBackgroundColor: "steelblue",
-                    calendarBackground: "powderblue", 
-                    selectedDayTextColor: "steelblue",
-                    todayTextColor: "#00adf5",
-                    dayTextColor: "#2d4150",
+                    backgroundColor: '#ffffff',
+                    calendarBackground: '#ffffff',
+                    textSectionTitleColor: 'darkgray',
+                    todayTextColor: 'black',
+                    dayTextColor: '#00bcd4',
+                    monthTextColor: 'black',
+                    textDayFontSize: 16,
+                    textMonthFontSize: 16,
+                    textDayHeaderFontSize: 16
                 }}
                 pastScrollRange={24}
                 futureScrollRange={24}
