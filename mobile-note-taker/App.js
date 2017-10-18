@@ -4,13 +4,14 @@ import MainTodo from './components/todo/MainTodo'
 import MainNote from './components/notes/MainNote'
 import {Font} from 'expo';
 import SegmentedControlTab from 'react-native-segmented-control-tab'
+import ScrollableCalendar from "./components/calendar/ScrollableCalendar";
 
 export default class App extends React.Component {
     constructor(){
-        super()
+        super();
         this.state = {
             selectedIndex: 0,
-            currentViews: [<Text> CALENDAR WILL BE IMPLEMENTED SOON </Text>, <MainTodo />, <MainNote />],
+            currentViews: [<ScrollableCalendar />, <MainTodo />, <MainNote />],
         };
         {this.handleIndexChange}
     }
