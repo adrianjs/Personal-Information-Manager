@@ -1,5 +1,9 @@
 import React from 'react';
 
+/*
+    Simple component class for displaying day names over calendar grid
+ */
+
 export default class DayNames extends React.Component {
     render() {
         return (

@@ -5,6 +5,9 @@ import DayNames from "../components/calendar/DayNames";
 import '../assets/Calendar.css';
 import Week from "../components/calendar/Week";
 
+/*
+    Main render class of the Calendar component.
+ */
 
 export default class Calendar extends React.Component {
     constructor(props){
@@ -30,6 +33,7 @@ export default class Calendar extends React.Component {
         this.initialiseEvents();
     }
 
+    //Change month view to previous month
     previous() {
         const currentMonthView = this.state.selectedMonth;
 
@@ -38,6 +42,7 @@ export default class Calendar extends React.Component {
         });
     }
 
+    //Change month view to next month
     next() {
         const currentMonthView = this.state.selectedMonth;
 
@@ -46,6 +51,7 @@ export default class Calendar extends React.Component {
         });
     }
 
+    //Function for selecting a specific day, sending you into the events for the day
     select(day){
         this.setState({
           selectedMonth: day.date,
@@ -54,6 +60,7 @@ export default class Calendar extends React.Component {
         });
     }
 
+    //Changes month view to the month that the current date is in
     goToCurrentMonthView(){
 
         this.setState({
@@ -61,6 +68,7 @@ export default class Calendar extends React.Component {
         });
     }
 
+    //Function that displays calendar after exiting event screen
     showCalendar(){
         this.setState({
             selectedMonth: this.state.selectedMonth,
@@ -69,6 +77,7 @@ export default class Calendar extends React.Component {
         });
     }
 
+    //Label for current month. i.e. displays "October 2017"
     renderMonthLabel(){
         const currentMonthView = this.state.selectedMonth;
 
@@ -79,6 +88,7 @@ export default class Calendar extends React.Component {
         );
     }
 
+    //Label for current day in events screen. i.e. displays "11 October 2017
     renderDayLabel(){
         const currentSelectedDay = this.state.selectedDay;
 
@@ -89,6 +99,7 @@ export default class Calendar extends React.Component {
         );
     }
 
+    //Label displaying "Today". Clicking it will change month view to current month
     renderTodayLabel(){
         return(
             <span className="box today-label" onClick={this.goToCurrentMonthView}>
@@ -97,6 +108,7 @@ export default class Calendar extends React.Component {
         );
     }
 
+    //Function for rendering weeks with days and dates in correct order.
     renderWeeks(){
         const currentMonthView = this.state.selectedMonth;
         const currentSelectedDay = this.state.selectedDay;
@@ -134,6 +146,7 @@ export default class Calendar extends React.Component {
         localStorage.setItem('savedEvents', JSON.stringify(updatedEvents));
     }
 
+    //Function for adding events. Uses browser prompt to give event name
     handleAdd() {
         const monthEvents = this.state.selectedMonthEvents;
         const currentSelectedDate = this.state.selectedDay;
@@ -170,10 +183,12 @@ export default class Calendar extends React.Component {
         }
     }
 
+    //Function attached to "Add event"-button. Simply throws handleAdd.
     addEvent(){
         this.handleAdd();
     }
 
+    //Function for removing events from day. Takes "i" as key of event being deleted.
     removeEvent(i) {
         const monthEvents = this.state.selectedMonthEvents.slice();
 
@@ -191,6 +206,7 @@ export default class Calendar extends React.Component {
         this.updateLocalStorage(monthEvents);
     }
 
+    //Function for filling calendar with dummy data
     initialiseEvents(){
         const monthEvents = this.state.selectedMonthEvents;
 
@@ -269,6 +285,8 @@ export default class Calendar extends React.Component {
         });
     }
 
+    //Render function for calendar. Uses several components to make a complete calendar.
+    //Two different views depending on state of showEvents.
     render(){
         const showEvents = this.state.showEvents;
 

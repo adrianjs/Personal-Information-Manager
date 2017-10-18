@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import Routes from './Routes';
 import './assets/App.css';
 import { AppBar} from 'material-ui';
+import Home from "./containers/Home";
+
+/*
+    Returns the page with the PIM, with a Material UI AppBar as the "header"
+ */
+
 
 class App extends Component {
   render() {
@@ -12,10 +16,10 @@ class App extends Component {
               title="Your Personal Manager"
               showMenuIconButton={false}
           />
-        <Routes />
+        <Home />
       </div>
     );
   }
 }
 
-export default withRouter(App);
+export default App;

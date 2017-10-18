@@ -24,6 +24,10 @@ if (tasks) {
     taskList = JSON.parse(tasks);
 }
 
+/*
+    Renders the components of the main page: the Calendar, the Note list and the To-do list
+    Uses the Bootstrap grid for placement
+ */
 
 export default class Home extends React.Component {
     render(){

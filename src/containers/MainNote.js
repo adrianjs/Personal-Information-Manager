@@ -4,6 +4,10 @@ import '../assets/Note.css';
 import {Dialog, RaisedButton} from "material-ui";
 import NewNote from "../components/note/NewNote";
 
+/*
+    Main component class for Notes.
+ */
+
 export class MainNote extends React.Component {
     constructor(props) {
         super(props);
@@ -37,6 +41,7 @@ export class MainNote extends React.Component {
         this.updateLocalStorage(updatedNotes);
     }
 
+    //Handle functions for dialog popup.
     handleClose = () => {
         this.setState({ open: false });
     };

@@ -1,6 +1,11 @@
 import React from 'react';
 import Day from './Day';
 
+/*
+    Component class for populating calendar with weeks.
+    Uses moment to make sure dates and order are correct.
+ */
+
 export default class Week extends React.Component {
     render(){
         let days = [];
