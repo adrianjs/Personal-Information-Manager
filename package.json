@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "enzyme-adapter-react-15": "^1.0.2",
     "jquery": "^3.2.1",
     "material-ui": "^0.19.4",
     "react": "15.6.1",
@@ -10,6 +11,7 @@
     "react-dom": "15.6.1",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.14",
+    "react-test-renderer": "^15.0.0",
     "react-transition-group": "^1.2.1"
   },
   "scripts": {
@@ -19,7 +21,11 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "babel-jest": "^21.2.0",
+    "enzyme": "^3.1.0",
+    "enzyme-to-json": "^3.1.4",
     "jest": "^21.2.1",
-    "moment": "2.18.1"
+    "moment": "2.18.1",
+    "react-addons-test-utils": "^15.6.2"
   }
 }

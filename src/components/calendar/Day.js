@@ -1,5 +1,11 @@
 import React from 'react';
 
+/*
+    Component for displaying days in the calendar.
+    Classnames are added depending on several things:
+    current day? same month as displayed? selected? does it have events?
+ */
+
 export default class Day extends React.Component {
     render(){
         let day = this.props.day;

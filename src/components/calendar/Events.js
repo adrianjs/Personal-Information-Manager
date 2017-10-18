@@ -2,6 +2,12 @@ import React from 'react';
 import { CSSTransitionGroup } from 'react-transition-group';
 import {RaisedButton} from "material-ui";
 
+/*
+    Component class for displaying events in a day.
+    Uses animations with CSSTransitionGroup to make it smooth and fancy.
+    Maps events from selectedMonthEvents array.
+ */
+
 export default class Events extends React.Component {
     render(){
         const currentSelectedDay = this.props.selectedDay;
@@ -47,6 +53,7 @@ export default class Events extends React.Component {
 
         const dayEventsRendered = [];
 
+        //Checks if events in this month are on the same day as the one selected, and populates if they are the same
         for (let i = 0; i < monthEventsRendered.length; i++){
             if (monthEvents[i].date.isSame(currentSelectedDay, "day")) {
                 dayEventsRendered.push(monthEventsRendered[i]);

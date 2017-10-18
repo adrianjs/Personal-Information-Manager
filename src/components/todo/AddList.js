@@ -2,6 +2,10 @@ import React from 'react';
 import '../../assets/ToDo.css';
 import {RaisedButton} from "material-ui";
 
+/*
+    Component class for displaying to-dos in a list.
+ */
+
 export class AddList extends React.Component {
     render() {
         //holds control over the list by adding/removing elements and buttons whenever a task is added/removed

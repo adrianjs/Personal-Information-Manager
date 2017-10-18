@@ -1,105 +1,98 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import MainTodo from './components/todo/MainTodo'
-import MainNote from './components/notes/MainNote'
-import {Font} from 'expo';
+import MainTodo from './containers/MainTodo'
+import MainNote from './containers/MainNote'
 import SegmentedControlTab from 'react-native-segmented-control-tab'
+import ScrollableCalendar from "./containers/ScrollableCalendar";
+
+/*
+    Main component for rendering the app.
+    Uses SegmentedControlTab to keep control over which view is displayed
+ */
 
 export default class App extends React.Component {
     constructor(){
-        super()
+        super();
         this.state = {
-            selectedIndex: 0,
-            currentViews: [<Text> CALENDAR WILL BE IMPLEMENTED SOON </Text>, <MainTodo />, <MainNote />],
+            selectedIndex: 1,
+            currentViews: [<ScrollableCalendar />, <MainTodo />, <MainNote />],
+            currentView: <MainTodo />
         };
-        {this.handleIndexChange}
     }
 
-    state = {
-        fontLoaded: true
-    };
-
-    async componentDidMount(){
-        await Font.loadAsync({
-            'roboto': require('./assets/fonts/Roboto-Regular.ttf'),
-            'font-awesome': require('./assets/fonts/fontawesome-webfont.ttf')
-        });
-        this.setState({ fontLoaded: true });
-    }
-
+    //Function for changing views
     handleIndexChange = (index) => {
         this.setState({
           selectedIndex: index,
           currentView: this.state.currentViews[index]
         });
-    }
+    };
 
     render() {
         return (
             <View>
+                <View style={styles.title}><Text style={styles.titleText}>Your Personal Manager</Text></View>
                 <View style={styles.tab}>
                     <SegmentedControlTab
                         tabsContainerStyle={styles.tabsContainerStyle}
                         activeTabStyle={styles.activeTabStyle}
                         tabStyle={styles.tabStyle}
                         tabTextStyle={styles.tabTextStyle}
-                        tabBadgeContainerStyle={styles.tabBadgeContainerStyle}
                         values={['Calendar', 'ToDo', 'Notes']}
                         selectedIndex={this.state.selectedIndex}
                         onTabPress={this.handleIndexChange}
                     />
                 </View>
-                <View style={styles.maincontainer}>{this.state.currentView}</View>
+                <View style={styles.mainContainer}>{this.state.currentView}</View>
             </View>
         );
     }
 }
-const appRender = () => {
-    return (
-        <View>
-            <Text>Open up App.js to start working on your app!</Text>
-            <Text>Changes you make will automatically reload.</Text>
-            <Text>Shake your phone to open the developer menu.</Text>
-            <MainTodo />
-            <MainNote />
-        </View>
-    );
-}
 
+//Stylesheet for styling the app
 const styles = StyleSheet.create({
-    tab: {
-        marginTop: 20,
-        height: 80,
+    title: {
+        paddingTop: 20,
+        paddingBottom: 10,
+        height: 60,
+        backgroundColor: '#00bcd4',
     },
 
-    maincontainer: {
-        justifyContent: "center",
-        backgroundColor: "powderblue",
-        height: 630,
+    titleText: {
+        fontSize: 30,
+        textAlign: "center",
+        color: "white",
+    },
+
+    tab: {
+        height: 50,
+    },
+
+    mainContainer: {
+        alignItems: "center",
+        backgroundColor: "white",
+        height: 600,
     },
 
     container: {
-        alignItems: 'center',
-        justifyContent: 'center',
+        alignItems: "center",
+        justifyContent: "center",
     },
 
     tabsContainerStyle: {
-        height: 80, 
+        height: "100%",
     },
 
     tabStyle: {
-        backgroundColor: 'skyblue',
+        backgroundColor: "#00bcd4",
+        borderColor: "#00bcd4",
     },
 
     activeTabStyle: {
-        backgroundColor: 'steelblue',
+        backgroundColor: "#009cd4",
     },
 
     tabTextStyle: {
-        color: 'black',
-    },
-
-    tabBadgeContainerStyle: {
-        color: 'black',
+        color: "white",
     },
 });

@@ -1,13 +1,19 @@
 import React from 'react';
-import NewNote from './NewNote';
-import NoteList from './NoteList';
-import { StyleSheet, Text, View, Button, AsyncStorage } from 'react-native';
+import NewNote from '../components/notes/NewNote';
+import NoteList from '../components/notes/NoteList';
+import { StyleSheet, Text, View, AsyncStorage, ScrollView } from 'react-native';
 
+//Dummy data passed to NoteList on first launch
 var noteList = [["NoteTitle 1", "NoteText 1", "High"],
 ["NoteTitle 2", "NoteText 2", "Mid"],
 ["NoteTitle 3", "NoteText 3", "Low"]];
+
 //Getting notes from local storage
 var notes = AsyncStorage.getItem('savedNotes');
+
+/*
+    Main component of notes. Renders the other components (NewNote and NoteList) on the Note view.
+ */
 
 export default class MainNote extends React.Component {
     constructor(props) {
@@ -19,12 +25,15 @@ export default class MainNote extends React.Component {
         };
         this.newNote = this.newNote.bind(this);
         this.removeNote = this.removeNote.bind(this);
+        {this.loadData}
     }
 
+    //Loads the locally saved notes on mount
     componentDidMount() {
         this.loadData().done()
     }
 
+    //Function for loading locally saved notes
     async loadData() {
         var array = [];
         notes.then((response) =>  {
@@ -48,6 +57,7 @@ export default class MainNote extends React.Component {
         });
     }
 
+    //Fetches locally saved notes
     updateLocalStorage(updatedNotes) {
         console.log("updated");
         AsyncStorage.setItem('savedNotes', JSON.stringify(updatedNotes));
@@ -69,19 +79,40 @@ export default class MainNote extends React.Component {
     }
 
     render() {
-        setTimeout(() => {this.setState({timePassed: true})}, 2000);        
         if (!this.state.arrayLoaded) {
             return <Text>Loading</Text>
         } else {
             return (
-                <View>
-                    <View className="mainTitles"><Text>My notes</Text></View>
-                    <View id="mainNote">
+                <View style={styles.container}>
+                    <View style={styles.noteTitle}><Text style={styles.noteTitleText}>My notes</Text></View>
+                    <NewNote newNote={this.newNote} />
+                    <ScrollView style={styles.contentContainer}>
                         <NoteList notes={this.state.notes} remove={this.removeNote} />
-                        <NewNote newNote={this.newNote} />
-                    </View>
+                    </ScrollView>    
                 </View>
             );
         }
-    }
+    }    
 }
+
+//Stylesheet for the Note view
+const styles = StyleSheet.create({
+    container: {
+        width: 500,
+        alignItems: "center",
+    },
+
+    noteTitle: {
+        marginTop: 30,
+    },
+
+    noteTitleText: {
+        fontSize: 30,
+    },
+
+    contentContainer: {
+         paddingHorizontal: 50,
+         margin: 2,
+         height: 350,
+    }
+});
