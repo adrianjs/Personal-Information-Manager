@@ -14,7 +14,7 @@ export default class NoteList extends React.Component {
                     <Text style={styles.noteTextDesc}>{element[1]}</Text>
                     <Text style={styles.noteTextPri}>{element[2]} priority</Text>
                 </View>
-                <Button style={styles.noteBtn} onPress={(e) => this.props.remove(i)} title="Delete" color="#ff4081" />
+                <View style={styles.noteBtn}><Button onPress={(e) => this.props.remove(i)} title="Delete" color="#ff4081" /></View>
             </View>
         });
         return (
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     },
 
     noteText: {
-        flex: 6,
+        flex: 8,
         padding: 20,
     },
 
@@ -52,7 +52,8 @@ const styles = StyleSheet.create({
     },
 
     noteBtn: {
-        flex: 1,
-        height: 10,
+        flex: 3,
+        justifyContent: "center",
+        marginRight: 5,
     }
 });
