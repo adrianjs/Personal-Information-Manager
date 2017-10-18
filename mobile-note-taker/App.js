@@ -13,19 +13,10 @@ export default class App extends React.Component {
             selectedIndex: 0,
             currentViews: [<ScrollableCalendar />, <MainTodo />, <MainNote />],
         };
-        {this.handleIndexChange}
     }
 
-    state = {
-        fontLoaded: true
-    };
-
-    async componentDidMount(){
-        await Font.loadAsync({
-            'roboto': require('./assets/fonts/Roboto-Regular.ttf'),
-            'font-awesome': require('./assets/fonts/fontawesome-webfont.ttf')
-        });
-        this.setState({ fontLoaded: true });
+    componentDidMount() {
+        this.handleIndexChange()
     }
 
     handleIndexChange = (index) => {
