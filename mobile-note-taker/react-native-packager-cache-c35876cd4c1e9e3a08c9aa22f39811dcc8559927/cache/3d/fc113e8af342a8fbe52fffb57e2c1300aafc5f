@@ -20,25 +20,58 @@ var _MainNote2 = babelHelpers.interopRequireDefault(_MainNote);
 
 var _expo = require('expo');
 
+var _reactNativeSegmentedControlTab = require('react-native-segmented-control-tab');
+
+var _reactNativeSegmentedControlTab2 = babelHelpers.interopRequireDefault(_reactNativeSegmentedControlTab);
+
 var regeneratorRuntime = require('regenerator-runtime');
 
 var App = function (_React$Component) {
     babelHelpers.inherits(App, _React$Component);
 
     function App() {
-        var _ref;
-
-        var _temp, _this, _ret;
-
         babelHelpers.classCallCheck(this, App);
 
-        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-            args[_key] = arguments[_key];
-        }
+        var _this = babelHelpers.possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
 
-        return _ret = (_temp = (_this = babelHelpers.possibleConstructorReturn(this, (_ref = App.__proto__ || Object.getPrototypeOf(App)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-            fontLoaded: false
-        }, _temp), babelHelpers.possibleConstructorReturn(_this, _ret);
+        _this.state = {
+            fontLoaded: true
+        };
+
+        _this.handleIndexChange = function (index) {
+            _this.setState({
+                selectedIndex: index,
+                currentView: _this.state.currentViews[index]
+            });
+        };
+
+        _this.state = {
+            selectedIndex: 0,
+            currentViews: [_react2.default.createElement(
+                _reactNative.Text,
+                {
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 13
+                    }
+                },
+                ' CALENDAR WILL BE IMPLEMENTED SOON '
+            ), _react2.default.createElement(_MainTodo2.default, {
+                __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 13
+                }
+            }), _react2.default.createElement(_MainNote2.default, {
+                __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 13
+                }
+            })]
+        };
+        {
+            _this.handleIndexChange;
+        }
+        return _this;
     }
 
     babelHelpers.createClass(App, [{
@@ -55,7 +88,6 @@ var App = function (_React$Component) {
                             }));
 
                         case 2:
-
                             this.setState({ fontLoaded: true });
 
                         case 3:
@@ -70,12 +102,43 @@ var App = function (_React$Component) {
         value: function render() {
             return _react2.default.createElement(
                 _reactNative.View,
-                { style: styles.container, __source: {
+                {
+                    __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 23
+                        lineNumber: 39
                     }
                 },
-                this.state.fontLoaded ? appRender : null
+                _react2.default.createElement(
+                    _reactNative.View,
+                    { style: styles.tab, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 40
+                        }
+                    },
+                    _react2.default.createElement(_reactNativeSegmentedControlTab2.default, {
+                        tabsContainerStyle: styles.tabsContainerStyle,
+                        activeTabStyle: styles.activeTabStyle,
+                        tabStyle: styles.tabStyle,
+                        tabTextStyle: styles.tabTextStyle,
+                        tabBadgeContainerStyle: styles.tabBadgeContainerStyle,
+                        values: ['Calendar', 'ToDo', 'Notes'],
+                        selectedIndex: this.state.selectedIndex,
+                        onTabPress: this.handleIndexChange,
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 41
+                        }
+                    })
+                ),
+                _react2.default.createElement(
+                    _reactNative.View,
+                    { style: styles.maincontainer, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 52
+                        }
+                    },
+                    this.state.currentView
+                )
             );
         }
     }]);
@@ -90,7 +153,7 @@ var appRender = function appRender() {
         {
             __source: {
                 fileName: _jsxFileName,
-                lineNumber: 31
+                lineNumber: 59
             }
         },
         _react2.default.createElement(
@@ -98,7 +161,7 @@ var appRender = function appRender() {
             {
                 __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 32
+                    lineNumber: 60
                 }
             },
             'Open up App.js to start working on your app!'
@@ -108,7 +171,7 @@ var appRender = function appRender() {
             {
                 __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 33
+                    lineNumber: 61
                 }
             },
             'Changes you make will automatically reload.'
@@ -118,7 +181,7 @@ var appRender = function appRender() {
             {
                 __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 34
+                    lineNumber: 62
                 }
             },
             'Shake your phone to open the developer menu.'
@@ -126,23 +189,52 @@ var appRender = function appRender() {
         _react2.default.createElement(_MainTodo2.default, {
             __source: {
                 fileName: _jsxFileName,
-                lineNumber: 35
+                lineNumber: 63
             }
         }),
         _react2.default.createElement(_MainNote2.default, {
             __source: {
                 fileName: _jsxFileName,
-                lineNumber: 36
+                lineNumber: 64
             }
         })
     );
 };
 
 var styles = _reactNative.StyleSheet.create({
+    tab: {
+        marginTop: 20,
+        height: 80
+    },
+
+    maincontainer: {
+        justifyContent: "center",
+        backgroundColor: "powderblue",
+        height: 630
+    },
+
     container: {
-        flex: 1,
-        backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center'
+    },
+
+    tabsContainerStyle: {
+        height: 80
+    },
+
+    tabStyle: {
+        backgroundColor: 'skyblue'
+    },
+
+    activeTabStyle: {
+        backgroundColor: 'steelblue'
+    },
+
+    tabTextStyle: {
+        color: 'black'
+    },
+
+    tabBadgeContainerStyle: {
+        color: 'black'
     }
 });

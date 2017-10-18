@@ -1,0 +1,233 @@
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var _jsxFileName = '/Users/baldur/Documents/it2810-webutvikling-h17-prosjekt-3-group-21/mobile-note-taker/node_modules/react-native-segmented-control-tab/SegmentedControlTab.js';
+
+var _react = require('react');
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require('react-native');
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = babelHelpers.interopRequireDefault(_propTypes);
+
+var handleTabPress = function handleTabPress(index, multiple, selectedIndex, onTabPress) {
+    if (multiple) {
+        onTabPress(index);
+    } else if (selectedIndex !== index) {
+        onTabPress(index);
+    }
+};
+
+var TabOption = function TabOption(_ref) {
+    var isTabActive = _ref.isTabActive,
+        index = _ref.index,
+        badge = _ref.badge,
+        text = _ref.text,
+        firstTabStyle = _ref.firstTabStyle,
+        lastTabStyle = _ref.lastTabStyle,
+        tabStyle = _ref.tabStyle,
+        activeTabStyle = _ref.activeTabStyle,
+        tabTextStyle = _ref.tabTextStyle,
+        activeTabTextStyle = _ref.activeTabTextStyle,
+        tabBadgeContainerStyle = _ref.tabBadgeContainerStyle,
+        activeTabBadgeContainerStyle = _ref.activeTabBadgeContainerStyle,
+        tabBadgeStyle = _ref.tabBadgeStyle,
+        activeTabBadgeStyle = _ref.activeTabBadgeStyle,
+        onTabPress = _ref.onTabPress;
+
+    return _react2.default.createElement(
+        _reactNative.TouchableOpacity,
+        { style: [styles.tabStyle, tabStyle, isTabActive ? [styles.activeTabStyle, activeTabStyle] : {}, firstTabStyle, lastTabStyle],
+            onPress: function onPress() {
+                return onTabPress(index);
+            },
+            activeOpacity: 1, __source: {
+                fileName: _jsxFileName,
+                lineNumber: 30
+            }
+        },
+        _react2.default.createElement(
+            _reactNative.View,
+            { style: { flexDirection: "row" }, __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 38
+                }
+            },
+            _react2.default.createElement(
+                _reactNative.Text,
+                { style: [styles.tabTextStyle, tabTextStyle, isTabActive ? [styles.activeTabTextStyle, activeTabTextStyle] : {}],
+                    numberOfLines: 1,
+                    ellipsizeMode: 'tail', __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 39
+                    }
+                },
+                text
+            ),
+            badge ? _react2.default.createElement(
+                _reactNative.View,
+                { style: [styles.tabBadgeContainerStyle, tabBadgeContainerStyle, isTabActive ? [styles.activeTabBadgeContainerStyle, activeTabBadgeContainerStyle] : {}], __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 49
+                    }
+                },
+                _react2.default.createElement(
+                    _reactNative.Text,
+                    { style: [styles.tabBadgeStyle, tabBadgeStyle, isTabActive ? [styles.activeTabBadgeStyle, activeTabBadgeStyle] : {}], __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 53
+                        }
+                    },
+                    badge
+                )
+            ) : false
+        )
+    );
+};
+
+var SegmentedControlTab = function SegmentedControlTab(_ref2) {
+    var multiple = _ref2.multiple,
+        selectedIndex = _ref2.selectedIndex,
+        selectedIndices = _ref2.selectedIndices,
+        values = _ref2.values,
+        badges = _ref2.badges,
+        borderRadius = _ref2.borderRadius,
+        tabsContainerStyle = _ref2.tabsContainerStyle,
+        tabStyle = _ref2.tabStyle,
+        activeTabStyle = _ref2.activeTabStyle,
+        tabTextStyle = _ref2.tabTextStyle,
+        activeTabTextStyle = _ref2.activeTabTextStyle,
+        tabBadgeContainerStyle = _ref2.tabBadgeContainerStyle,
+        activeTabBadgeContainerStyle = _ref2.activeTabBadgeContainerStyle,
+        tabBadgeStyle = _ref2.tabBadgeStyle,
+        activeTabBadgeStyle = _ref2.activeTabBadgeStyle,
+        _onTabPress = _ref2.onTabPress;
+
+
+    var firstTabStyle = [{ borderRightWidth: 0, borderTopLeftRadius: borderRadius, borderBottomLeftRadius: borderRadius }];
+    var lastTabStyle = [{ borderLeftWidth: 0, borderTopRightRadius: borderRadius, borderBottomRightRadius: borderRadius }];
+
+    return _react2.default.createElement(
+        _reactNative.View,
+        {
+            style: [styles.tabsContainerStyle, tabsContainerStyle],
+            removeClippedSubviews: false, __source: {
+                fileName: _jsxFileName,
+                lineNumber: 80
+            }
+        },
+        values.map(function (item, index) {
+            return _react2.default.createElement(TabOption, {
+                key: index,
+                index: index,
+                badge: badges && badges[index] ? badges[index] : false,
+                isTabActive: multiple ? selectedIndices.includes(index) : selectedIndex === index,
+                text: item,
+                onTabPress: function onTabPress(index) {
+                    return handleTabPress(index, multiple, selectedIndex, _onTabPress);
+                },
+                firstTabStyle: index === 0 ? [{ borderRightWidth: 0 }, firstTabStyle] : {},
+                lastTabStyle: index === values.length - 1 ? [{ borderLeftWidth: 0 }, lastTabStyle] : {},
+                tabStyle: [tabStyle, index !== 0 && index !== values.length - 1 ? { paddingLeft: -1 } : {}],
+                activeTabStyle: activeTabStyle,
+                tabTextStyle: tabTextStyle,
+                activeTabTextStyle: activeTabTextStyle,
+                tabBadgeContainerStyle: tabBadgeContainerStyle,
+                activeTabBadgeContainerStyle: activeTabBadgeContainerStyle,
+                tabBadgeStyle: tabBadgeStyle,
+                activeTabBadgeStyle: activeTabBadgeStyle, __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 86
+                }
+            });
+        })
+    );
+};
+
+SegmentedControlTab.propTypes = {
+    values: _propTypes2.default.array,
+    badges: _propTypes2.default.array,
+    multiple: _propTypes2.default.bool,
+    onTabPress: _propTypes2.default.func,
+    selectedIndex: _propTypes2.default.number,
+    selectedIndices: _propTypes2.default.arrayOf(_propTypes2.default.number),
+    tabsContainerStyle: _reactNative.ViewPropTypes.style,
+    tabStyle: _reactNative.ViewPropTypes.style,
+    activeTabStyle: _reactNative.ViewPropTypes.style,
+    tabTextStyle: _reactNative.Text.propTypes.style,
+    activeTabTextStyle: _reactNative.Text.propTypes.style,
+    tabBadgeContainerStyle: _reactNative.Text.propTypes.style,
+    activeTabBadgeContainerStyle: _reactNative.Text.propTypes.style,
+    tabBadgeStyle: _reactNative.Text.propTypes.style,
+    activeTabBadgeStyle: _reactNative.Text.propTypes.style,
+    borderRadius: _propTypes2.default.number
+};
+
+SegmentedControlTab.defaultProps = {
+    values: ['One', 'Two', 'Three'],
+    badges: ['', '', ''],
+    multiple: false,
+    selectedIndex: 0,
+    selectedIndices: [0],
+    onTabPress: function onTabPress() {},
+
+    tabsContainerStyle: {},
+    tabStyle: {},
+    activeTabStyle: {},
+    tabTextStyle: {},
+    activeTabTextStyle: {},
+    tabBadgeContainerStyle: {},
+    activeTabBadgeContainerStyle: {},
+    tabBadgeStyle: {},
+    activeTabBadgeStyle: {},
+    borderRadius: 5
+};
+
+var styles = _reactNative.StyleSheet.create({
+    tabsContainerStyle: {
+        backgroundColor: 'transparent',
+        flexDirection: 'row'
+    },
+    tabStyle: {
+        paddingVertical: 5,
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderColor: '#0076FF',
+        borderWidth: 1,
+        backgroundColor: 'white'
+    },
+    activeTabStyle: {
+        backgroundColor: '#0076FF'
+    },
+    tabTextStyle: {
+        color: '#0076FF'
+    },
+    activeTabTextStyle: {
+        color: 'white'
+    },
+    tabBadgeContainerStyle: {
+        borderRadius: 20,
+        backgroundColor: 'red',
+        paddingLeft: 5,
+        paddingRight: 5,
+        marginLeft: 5,
+        marginBottom: 3
+    },
+    activeTabBadgeContainerStyle: {
+        backgroundColor: 'white'
+    },
+    tabBadgeStyle: {
+        color: 'white',
+        fontSize: 11,
+        fontWeight: 'bold'
+    },
+    activeTabBadgeStyle: {
+        color: 'black'
+    }
+});
+
+exports.default = SegmentedControlTab;
