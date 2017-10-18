@@ -11,7 +11,7 @@ export default class AddList extends React.Component {
         var items = this.props.tasks.map((element, i) => {
             return <View style={styles.todoTask} key={i}>
                 <Text style={styles.todoText}>{element}</Text>
-                <Button style={styles.todoBtn} onPress={(e) => this.props.remove(i)} title="Delete" color="#ff4081" />
+                <View style={styles.todoBtn}><Button onPress={(e) => this.props.remove(i)} title="Delete" color="#ff4081" /></View>
             </View>
         });
         return (
@@ -33,12 +33,14 @@ const styles = StyleSheet.create({
     },
 
     todoText: {
-        flex: 6,
+        flex: 8,
         fontSize: 20,
         padding: 20,
     },
 
     todoBtn: {
-        flex: 1,
+        flex: 3,
+        justifyContent: "center",
+        marginRight: 5,
     }
 });
