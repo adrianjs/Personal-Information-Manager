@@ -5,6 +5,11 @@ import MainNote from './containers/MainNote'
 import SegmentedControlTab from 'react-native-segmented-control-tab'
 import ScrollableCalendar from "./containers/ScrollableCalendar";
 
+/*
+    Main component for rendering the app.
+    Uses SegmentedControlTab to keep control over which view is displayed
+ */
+
 export default class App extends React.Component {
     constructor(){
         super();
@@ -15,12 +20,13 @@ export default class App extends React.Component {
         };
     }
 
+    //Function for changing views
     handleIndexChange = (index) => {
         this.setState({
           selectedIndex: index,
           currentView: this.state.currentViews[index]
         });
-    }
+    };
 
     render() {
         return (
@@ -37,12 +43,13 @@ export default class App extends React.Component {
                         onTabPress={this.handleIndexChange}
                     />
                 </View>
-                <View style={styles.maincontainer}>{this.state.currentView}</View>
+                <View style={styles.mainContainer}>{this.state.currentView}</View>
             </View>
         );
     }
 }
 
+//Stylesheet for styling the app
 const styles = StyleSheet.create({
     title: {
         paddingTop: 20,
@@ -61,7 +68,7 @@ const styles = StyleSheet.create({
         height: 50,
     },
 
-    maincontainer: {
+    mainContainer: {
         justifyContent: "center",
         backgroundColor: "white",
         height: 600,
