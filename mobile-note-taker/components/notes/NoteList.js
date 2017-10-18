@@ -1,5 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { Text, View, Button } from 'react-native';
+
+/*
+    Component for rendering saved notes in a list.
+ */
 
 export default class NoteList extends React.Component {
     render() {
