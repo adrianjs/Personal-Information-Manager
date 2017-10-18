@@ -2,7 +2,6 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import MainTodo from './components/todo/MainTodo'
 import MainNote from './components/notes/MainNote'
-import {Font} from 'expo';
 import SegmentedControlTab from 'react-native-segmented-control-tab'
 import ScrollableCalendar from "./components/calendar/ScrollableCalendar";
 
@@ -12,11 +11,8 @@ export default class App extends React.Component {
         this.state = {
             selectedIndex: 0,
             currentViews: [<ScrollableCalendar />, <MainTodo />, <MainNote />],
+            currentView: <ScrollableCalendar />
         };
-    }
-
-    componentDidMount() {
-        this.handleIndexChange()
     }
 
     handleIndexChange = (index) => {
@@ -45,17 +41,6 @@ export default class App extends React.Component {
             </View>
         );
     }
-}
-const appRender = () => {
-    return (
-        <View>
-            <Text>Open up App.js to start working on your app!</Text>
-            <Text>Changes you make will automatically reload.</Text>
-            <Text>Shake your phone to open the developer menu.</Text>
-            <MainTodo />
-            <MainNote />
-        </View>
-    );
 }
 
 const styles = StyleSheet.create({
