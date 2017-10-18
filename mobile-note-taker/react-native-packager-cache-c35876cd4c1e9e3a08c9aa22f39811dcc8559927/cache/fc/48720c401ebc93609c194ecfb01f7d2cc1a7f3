@@ -1,0 +1,152 @@
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = undefined;
+var _jsxFileName = '/Users/baldur/Documents/it2810-webutvikling-h17-prosjekt-3-group-21/mobile-note-taker/components/notes/NewNote.js';
+
+var _react = require('react');
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require('react-native');
+
+var _reactNativeSimpleRadioButton = require('react-native-simple-radio-button');
+
+var _reactNativeSimpleRadioButton2 = babelHelpers.interopRequireDefault(_reactNativeSimpleRadioButton);
+
+var radio_props = [{ label: 'Low', value: "Low" }, { label: 'Mid', value: "Mid" }, { label: 'High', value: "High" }];
+
+var NewNote = function (_React$Component) {
+    babelHelpers.inherits(NewNote, _React$Component);
+
+    function NewNote(props) {
+        babelHelpers.classCallCheck(this, NewNote);
+
+        var _this = babelHelpers.possibleConstructorReturn(this, (NewNote.__proto__ || Object.getPrototypeOf(NewNote)).call(this, props));
+
+        _this.handleTitleChange = function (event) {
+            _this.setState({ noteTitle: event.nativeEvent.text });
+        };
+
+        _this.handleTextChange = function (event) {
+            _this.setState({ noteText: event.nativeEvent.text });
+        };
+
+        _this.state = {
+            noteTitle: "",
+            noteText: "",
+            notePri: "Low"
+        };
+        _this.handleSubmit = _this.handleSubmit.bind(_this);
+        _this.handleTitleChange = _this.handleTitleChange.bind(_this);
+        _this.handleTextChange = _this.handleTextChange.bind(_this);
+        return _this;
+    }
+
+    babelHelpers.createClass(NewNote, [{
+        key: 'validateForm',
+        value: function validateForm() {
+            return this.state.noteTitle.length > 0 && this.state.noteText.length > 0;
+        }
+    }, {
+        key: 'onRadioChange',
+        value: function onRadioChange(value) {
+            this.setState({
+                notePri: value
+            });
+        }
+    }, {
+        key: 'validateForm',
+        value: function validateForm() {
+            return this.state.noteTitle.length > 0 && this.state.noteText.length > 0;
+        }
+    }, {
+        key: 'handleSubmit',
+        value: function handleSubmit(event) {
+            event.preventDefault();
+            var value = [this.state.noteTitle, this.state.noteText, this.state.notePri];
+            this.props.newNote(value);
+            this.setState({
+                noteTitle: "",
+                noteText: ""
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            return _react2.default.createElement(
+                _reactNative.View,
+                {
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 58
+                    }
+                },
+                _react2.default.createElement(
+                    _reactNative.Text,
+                    {
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 59
+                        }
+                    },
+                    'Add a new note:'
+                ),
+                _react2.default.createElement(_reactNative.TextInput, {
+                    style: { height: 40, width: 180, borderColor: 'gray', borderWidth: 1 },
+                    onChange: function onChange(e) {
+                        return _this2.handleTitleChange(e);
+                    },
+                    value: this.state.noteTitle,
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 60
+                    }
+                }),
+                _react2.default.createElement(_reactNative.TextInput, {
+                    style: { height: 80, width: 180, borderColor: 'gray', borderWidth: 1 },
+                    multiline: true,
+                    onChange: function onChange(e) {
+                        return _this2.handleTextChange(e);
+                    },
+                    value: this.state.noteText,
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 65
+                    }
+                }),
+                _react2.default.createElement(_reactNativeSimpleRadioButton2.default, {
+                    radio_props: radio_props,
+                    initial: 0,
+                    formHorizontal: true,
+                    labelHorizontal: true,
+                    buttonColor: '#2196f3',
+                    animation: false,
+                    onPress: function onPress(value) {
+                        _this2.setState({ notePri: value });
+                    },
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 72
+                    }
+                }),
+                _react2.default.createElement(_reactNative.Button, {
+                    disabled: !this.validateForm(),
+                    title: 'Submit',
+                    onPress: function onPress(e) {
+                        return _this2.handleSubmit(e);
+                    },
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 82
+                    }
+                })
+            );
+        }
+    }]);
+    return NewNote;
+}(_react2.default.Component);
+
+exports.default = NewNote;

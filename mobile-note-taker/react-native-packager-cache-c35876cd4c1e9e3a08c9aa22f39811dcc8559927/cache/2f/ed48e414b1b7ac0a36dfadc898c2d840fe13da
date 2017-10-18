@@ -1,0 +1,179 @@
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = undefined;
+var _jsxFileName = '/Users/baldur/Documents/it2810-webutvikling-h17-prosjekt-3-group-21/mobile-note-taker/components/notes/MainNote.js';
+
+var _react = require('react');
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _NewNote = require('./NewNote');
+
+var _NewNote2 = babelHelpers.interopRequireDefault(_NewNote);
+
+var _NoteList = require('./NoteList');
+
+var _NoteList2 = babelHelpers.interopRequireDefault(_NoteList);
+
+var _reactNative = require('react-native');
+
+var regeneratorRuntime = require('regenerator-runtime');
+
+var noteList = [["NoteTitle 1", "NoteText 1", "High"], ["NoteTitle 2", "NoteText 2", "Mid"], ["NoteTitle 3", "NoteText 3", "Low"]];
+
+var notes = _reactNative.AsyncStorage.getItem('savedNotes');
+
+var MainNote = function (_React$Component) {
+    babelHelpers.inherits(MainNote, _React$Component);
+
+    function MainNote(props) {
+        babelHelpers.classCallCheck(this, MainNote);
+
+        var _this = babelHelpers.possibleConstructorReturn(this, (MainNote.__proto__ || Object.getPrototypeOf(MainNote)).call(this, props));
+
+        _this.state = {
+            notes: noteList,
+            open: false,
+            arrayLoaded: false
+        };
+        _this.newNote = _this.newNote.bind(_this);
+        _this.removeNote = _this.removeNote.bind(_this);
+        return _this;
+    }
+
+    babelHelpers.createClass(MainNote, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            this.loadData().done();
+        }
+    }, {
+        key: 'loadData',
+        value: function loadData() {
+            var _this2 = this;
+
+            var array;
+            return regeneratorRuntime.async(function loadData$(_context) {
+                while (1) {
+                    switch (_context.prev = _context.next) {
+                        case 0:
+                            array = [];
+
+                            notes.then(function (response) {
+                                console.log("response", response);
+                                return JSON.parse(response);
+                            }).then(function (data) {
+                                console.log("data", data);
+                                array = data;
+                                if (array.length > 0) {
+                                    _this2.setState({ notes: array });
+                                    _this2.setState({ arrayLoaded: true });
+                                    console.log("states set!");
+                                } else {
+                                    _this2.setState({ notes: noteList });
+                                    _this2.setState({ arrayLoaded: true });
+                                    console.log("array not found, using default");
+                                }
+                            });
+
+                        case 2:
+                        case 'end':
+                            return _context.stop();
+                    }
+                }
+            }, null, this);
+        }
+    }, {
+        key: 'updateLocalStorage',
+        value: function updateLocalStorage(updatedNotes) {
+            console.log("updated");
+            _reactNative.AsyncStorage.setItem('savedNotes', JSON.stringify(updatedNotes));
+        }
+    }, {
+        key: 'newNote',
+        value: function newNote(text) {
+            var updatedNotes = this.state.notes;
+            updatedNotes.unshift([text[0], text[1], text[2]]);
+            this.setState({ notes: updatedNotes });
+            this.updateLocalStorage(updatedNotes);
+        }
+    }, {
+        key: 'removeNote',
+        value: function removeNote(index) {
+            var updatedNotes = this.state.notes;
+            updatedNotes.splice(index, 1);
+            this.setState({ notes: updatedNotes });
+            this.updateLocalStorage(updatedNotes);
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this3 = this;
+
+            setTimeout(function () {
+                _this3.setState({ timePassed: true });
+            }, 2000);
+            if (!this.state.arrayLoaded) {
+                return _react2.default.createElement(
+                    _reactNative.Text,
+                    {
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 71
+                        }
+                    },
+                    'Loading'
+                );
+            } else {
+                return _react2.default.createElement(
+                    _reactNative.View,
+                    {
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 74
+                        }
+                    },
+                    _react2.default.createElement(
+                        _reactNative.View,
+                        { className: 'mainTitles', __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 75
+                            }
+                        },
+                        _react2.default.createElement(
+                            _reactNative.Text,
+                            {
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 75
+                                }
+                            },
+                            'My notes'
+                        )
+                    ),
+                    _react2.default.createElement(
+                        _reactNative.View,
+                        { id: 'mainNote', __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 76
+                            }
+                        },
+                        _react2.default.createElement(_NoteList2.default, { notes: this.state.notes, remove: this.removeNote, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 77
+                            }
+                        }),
+                        _react2.default.createElement(_NewNote2.default, { newNote: this.newNote, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 78
+                            }
+                        })
+                    )
+                );
+            }
+        }
+    }]);
+    return MainNote;
+}(_react2.default.Component);
+
+exports.default = MainNote;

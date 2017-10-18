@@ -1,0 +1,93 @@
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = undefined;
+var _jsxFileName = '/Users/baldur/Documents/it2810-webutvikling-h17-prosjekt-3-group-21/mobile-note-taker/components/notes/NoteList.js';
+
+var _react = require('react');
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require('react-native');
+
+var NoteList = function (_React$Component) {
+    babelHelpers.inherits(NoteList, _React$Component);
+
+    function NoteList() {
+        babelHelpers.classCallCheck(this, NoteList);
+        return babelHelpers.possibleConstructorReturn(this, (NoteList.__proto__ || Object.getPrototypeOf(NoteList)).apply(this, arguments));
+    }
+
+    babelHelpers.createClass(NoteList, [{
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            var items = this.props.notes.map(function (element, i) {
+                return _react2.default.createElement(
+                    _reactNative.View,
+                    { className: 'note', key: i, id: i, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 7
+                        }
+                    },
+                    _react2.default.createElement(
+                        _reactNative.View,
+                        { className: 'noteContainer', __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 8
+                            }
+                        },
+                        _react2.default.createElement(
+                            _reactNative.Text,
+                            { className: 'noteTitle', __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 9
+                                }
+                            },
+                            element[0]
+                        ),
+                        _react2.default.createElement(
+                            _reactNative.Text,
+                            { className: 'noteText', __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 10
+                                }
+                            },
+                            element[1]
+                        ),
+                        _react2.default.createElement(
+                            _reactNative.Text,
+                            { className: 'notePrior', __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 11
+                                }
+                            },
+                            element[2],
+                            ' priority'
+                        )
+                    ),
+                    _react2.default.createElement(_reactNative.Button, { onPress: function onPress(e) {
+                            return _this2.props.remove(i);
+                        }, title: 'Delete', color: '#841584', __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 13
+                        }
+                    })
+                );
+            });
+            return _react2.default.createElement(
+                _reactNative.View,
+                { id: 'allNotes', __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 17
+                    }
+                },
+                items
+            );
+        }
+    }]);
+    return NoteList;
+}(_react2.default.Component);
+
+exports.default = NoteList;

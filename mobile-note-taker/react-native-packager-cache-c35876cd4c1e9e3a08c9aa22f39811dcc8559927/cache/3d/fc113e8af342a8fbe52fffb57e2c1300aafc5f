@@ -1,0 +1,148 @@
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = undefined;
+var _jsxFileName = '/Users/baldur/Documents/it2810-webutvikling-h17-prosjekt-3-group-21/mobile-note-taker/App.js';
+
+var _react = require('react');
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require('react-native');
+
+var _MainTodo = require('./components/todo/MainTodo');
+
+var _MainTodo2 = babelHelpers.interopRequireDefault(_MainTodo);
+
+var _MainNote = require('./components/notes/MainNote');
+
+var _MainNote2 = babelHelpers.interopRequireDefault(_MainNote);
+
+var _expo = require('expo');
+
+var regeneratorRuntime = require('regenerator-runtime');
+
+var App = function (_React$Component) {
+    babelHelpers.inherits(App, _React$Component);
+
+    function App() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
+        babelHelpers.classCallCheck(this, App);
+
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
+
+        return _ret = (_temp = (_this = babelHelpers.possibleConstructorReturn(this, (_ref = App.__proto__ || Object.getPrototypeOf(App)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+            fontLoaded: false
+        }, _temp), babelHelpers.possibleConstructorReturn(_this, _ret);
+    }
+
+    babelHelpers.createClass(App, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            return regeneratorRuntime.async(function componentDidMount$(_context) {
+                while (1) {
+                    switch (_context.prev = _context.next) {
+                        case 0:
+                            _context.next = 2;
+                            return regeneratorRuntime.awrap(_expo.Font.loadAsync({
+                                'roboto': require('./assets/fonts/Roboto-Regular.ttf'),
+                                'font-awesome': require('./assets/fonts/fontawesome-webfont.ttf')
+                            }));
+
+                        case 2:
+
+                            this.setState({ fontLoaded: true });
+
+                        case 3:
+                        case 'end':
+                            return _context.stop();
+                    }
+                }
+            }, null, this);
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                _reactNative.View,
+                { style: styles.container, __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 23
+                    }
+                },
+                this.state.fontLoaded ? appRender : null
+            );
+        }
+    }]);
+    return App;
+}(_react2.default.Component);
+
+exports.default = App;
+
+var appRender = function appRender() {
+    return _react2.default.createElement(
+        _reactNative.View,
+        {
+            __source: {
+                fileName: _jsxFileName,
+                lineNumber: 31
+            }
+        },
+        _react2.default.createElement(
+            _reactNative.Text,
+            {
+                __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 32
+                }
+            },
+            'Open up App.js to start working on your app!'
+        ),
+        _react2.default.createElement(
+            _reactNative.Text,
+            {
+                __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 33
+                }
+            },
+            'Changes you make will automatically reload.'
+        ),
+        _react2.default.createElement(
+            _reactNative.Text,
+            {
+                __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 34
+                }
+            },
+            'Shake your phone to open the developer menu.'
+        ),
+        _react2.default.createElement(_MainTodo2.default, {
+            __source: {
+                fileName: _jsxFileName,
+                lineNumber: 35
+            }
+        }),
+        _react2.default.createElement(_MainNote2.default, {
+            __source: {
+                fileName: _jsxFileName,
+                lineNumber: 36
+            }
+        })
+    );
+};
+
+var styles = _reactNative.StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center'
+    }
+});
