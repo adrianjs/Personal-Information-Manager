@@ -1,6 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
+/*
+    Component for rendering all saved/dummied to-dos in a list with scroll functionality.
+ */
+
 export default class AddList extends React.Component {
     render() {
         //keeps control over the list by adding/removing elements and buttons whenever a task is added/removed
@@ -16,6 +20,7 @@ export default class AddList extends React.Component {
     }
 }
 
+//Stylesheet for the list itself.
 const styles = StyleSheet.create({
     todoTask: {
         backgroundColor: "#eeeeee",

@@ -1,5 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View, Form, TextInput } from 'react-native';
+import { View, TextInput } from 'react-native';
+
+/*
+    Component for adding a task to the to-do list.
+    Is really just a textfield with functions.
+ */
 
 export default class AddTask extends React.Component {
     constructor(props) {
@@ -16,6 +21,7 @@ export default class AddTask extends React.Component {
         this.setState({todoText: ""});
     }
 
+    //Updates state when typing into textfield.
     handleChange = event => {
         this.setState({todoText: event.nativeEvent.text});
     };

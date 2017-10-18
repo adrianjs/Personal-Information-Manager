@@ -8,6 +8,11 @@ var taskList = ["Task 1", "Task 2", "Task 3"];
 //Getting tasks from local storage
 var tasks = AsyncStorage.getItem('savedTasks');
 
+/*
+    Main component for the to-do view.
+    Handles all loading and renders the other to-do components (AddList and AddTask).
+ */
+
 export default class MainTodo extends React.Component {
     constructor(props) {
         super(props);
@@ -19,10 +24,12 @@ export default class MainTodo extends React.Component {
         this.removeTask = this.removeTask.bind(this);
     }
 
+    //Loads locally saved data on mount
     componentDidMount() {
         this.loadData().done()
     }
 
+    //Function for loading locally saved data
     async loadData() {
         var array = [];
         tasks.then((response) =>  {
@@ -84,6 +91,7 @@ export default class MainTodo extends React.Component {
     }
 }
 
+//Stylesheet for the To-do view
 const styles = StyleSheet.create({
     container: {
         width: 500,
