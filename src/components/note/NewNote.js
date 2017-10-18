@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/Note.css';
+import '../../assets/Note.css';
 import {RadioButton, RadioButtonGroup, RaisedButton, TextField} from "material-ui";
 
 export default class NewNote extends React.Component {

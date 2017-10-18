@@ -1,6 +1,6 @@
 import React from 'react';
 import NoteList from '../components/note/NoteList';
-import '../components/css/Note.css';
+import '../assets/Note.css';
 import {Dialog, RaisedButton} from "material-ui";
 import NewNote from "../components/note/NewNote";
 
@@ -30,10 +30,9 @@ export class MainNote extends React.Component {
         this.updateLocalStorage(updatedNotes);
     }
 
-    removeNote(element) {
-        var value = element.target.parentNode.id;
+    removeNote(index) {
         var updatedNotes = this.state.notes;
-        updatedNotes.splice(value, 1);
+        updatedNotes.splice(index, 1);
         this.setState({notes: updatedNotes});
         this.updateLocalStorage(updatedNotes);
     }

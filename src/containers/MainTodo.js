@@ -1,7 +1,7 @@
 import React from 'react';
 import { AddTask } from '../components/todo/AddTask';
 import { AddList } from '../components/todo/AddList';
-import '../components/css/ToDo.css';
+import '../assets/ToDo.css';
 
 export class MainTodo extends React.Component {
     constructor(props) {
@@ -24,10 +24,9 @@ export class MainTodo extends React.Component {
         this.updateLocalStorage(updatedTasks);
     }
 
-    removeTask(element) {
-        var value = element.target.parentNode.id;
+    removeTask(index) {
         var updatedTasks = this.state.tasks;
-        updatedTasks.splice(value, 1);
+        updatedTasks.splice(index, 1);
         this.setState({tasks: updatedTasks})
         this.updateLocalStorage(updatedTasks);
     }
