@@ -31,7 +31,6 @@ export default class App extends React.Component {
                         activeTabStyle={styles.activeTabStyle}
                         tabStyle={styles.tabStyle}
                         tabTextStyle={styles.tabTextStyle}
-                        tabBadgeContainerStyle={styles.tabBadgeContainerStyle}
                         values={['Calendar', 'ToDo', 'Notes']}
                         selectedIndex={this.state.selectedIndex}
                         onTabPress={this.handleIndexChange}
@@ -56,27 +55,24 @@ const styles = StyleSheet.create({
     },
 
     container: {
-        alignItems: 'center',
-        justifyContent: 'center',
+        alignItems: "center",
+        justifyContent: "center",
     },
 
     tabsContainerStyle: {
-        height: 80, 
+        height: 80,
     },
 
     tabStyle: {
-        backgroundColor: 'skyblue',
+        backgroundColor: "skyblue",
+        borderColor: "steelblue",
     },
 
     activeTabStyle: {
-        backgroundColor: 'steelblue',
+        backgroundColor: "steelblue",
     },
 
     tabTextStyle: {
-        color: 'black',
-    },
-
-    tabBadgeContainerStyle: {
-        color: 'black',
+        color: "black",
     },
 });

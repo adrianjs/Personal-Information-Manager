@@ -1,7 +1,7 @@
 import React from 'react';
 import NewNote from './NewNote';
 import NoteList from './NoteList';
-import { StyleSheet, Text, View, Button, AsyncStorage } from 'react-native';
+import { StyleSheet, Text, View, Button, AsyncStorage, ScrollView } from 'react-native';
 
 var noteList = [["NoteTitle 1", "NoteText 1", "High"],
 ["NoteTitle 2", "NoteText 2", "Mid"],
@@ -77,11 +77,21 @@ export default class MainNote extends React.Component {
                 <View>
                     <View className="mainTitles"><Text>My notes</Text></View>
                     <View id="mainNote">
-                        <NoteList notes={this.state.notes} remove={this.removeNote} />
+                        <ScrollView style={styles.contentContainer}>
+                            <NoteList notes={this.state.notes} remove={this.removeNote} />
+                        </ScrollView>    
                         <NewNote newNote={this.newNote} />
                     </View>
                 </View>
             );
         }
-    }
+    }    
 }
+
+const styles = StyleSheet.create({
+    contentContainer: {
+         paddingHorizontal: 50,
+         margin: 2,
+         height: 200,
+    }
+});

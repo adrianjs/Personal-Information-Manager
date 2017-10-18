@@ -9,12 +9,14 @@ export default class ScrollableCalendar extends React.Component {
                 firstDay={1}
                 style={{
                     borderWidth: 1,
-                    borderColor: 'gray',
-                    height: 350
+                    borderColor: "steelblue",
+                    height: 350,
+                    backgroundColor: "powderblue",
                 }}
                 theme={{
-                    selectedDayBackgroundColor: "#00adf5",
-                    selectedDayTextColor: "#fff",
+                    selectedDayBackgroundColor: "steelblue",
+                    calendarBackground: "powderblue", 
+                    selectedDayTextColor: "steelblue",
                     todayTextColor: "#00adf5",
                     dayTextColor: "#2d4150",
                 }}

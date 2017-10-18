@@ -1,7 +1,7 @@
 import React from 'react';
 import AddTask from './AddTask';
 import AddList from './AddList';
-import { StyleSheet, Text, View, AsyncStorage } from 'react-native';
+import { StyleSheet, Text, View, AsyncStorage, ScrollView } from 'react-native';
 
 //Default task list
 var taskList = ["Task 1", "Task 2", "Task 3"];
@@ -76,10 +76,20 @@ export default class MainTodo extends React.Component {
                     <View className="mainTitles"><Text className="mainTitles">Todo</Text></View>
                     <View id="mainTodo">
                         <AddTask updateList={this.updateList} />
-                        <AddList tasks={this.state.tasks} remove={this.removeTask}/>
+                        <ScrollView style={styles.contentContainer}>
+                            <AddList tasks={this.state.tasks} remove={this.removeTask}/>
+                        </ScrollView>   
                     </View>
                 </View>
             );
         }
     }
 }
+
+const styles = StyleSheet.create({
+    contentContainer: {
+         paddingHorizontal: 50,
+         margin: 2,
+         height: 200,
+    }
+});
