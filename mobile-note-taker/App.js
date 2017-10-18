@@ -3,10 +3,20 @@ import { StyleSheet, Text, View } from 'react-native';
 import MainTodo from './components/todo/MainTodo'
 import MainNote from './components/notes/MainNote'
 import {Font} from 'expo';
+import SegmentedControlTab from 'react-native-segmented-control-tab'
 
 export default class App extends React.Component {
+    constructor(){
+        super()
+        this.state = {
+            selectedIndex: 0,
+            currentViews: [<Text> CALENDAR WILL BE IMPLEMENTED SOON </Text>, <MainTodo />, <MainNote />],
+        };
+        {this.handleIndexChange}
+    }
+
     state = {
-        fontLoaded: false
+        fontLoaded: true
     };
 
     async componentDidMount(){
@@ -14,17 +24,35 @@ export default class App extends React.Component {
             'roboto': require('./assets/fonts/Roboto-Regular.ttf'),
             'font-awesome': require('./assets/fonts/fontawesome-webfont.ttf')
         });
-
         this.setState({ fontLoaded: true });
     }
 
-  render() {
-    return (
-      <View style={styles.container}>
-          { this.state.fontLoaded ? appRender : null }
-      </View>
-    );
-  }
+    handleIndexChange = (index) => {
+        this.setState({
+          selectedIndex: index,
+          currentView: this.state.currentViews[index]
+        });
+    }
+
+    render() {
+        return (
+            <View>
+                <View style={styles.tab}>
+                    <SegmentedControlTab
+                        tabsContainerStyle={styles.tabsContainerStyle}
+                        activeTabStyle={styles.activeTabStyle}
+                        tabStyle={styles.tabStyle}
+                        tabTextStyle={styles.tabTextStyle}
+                        tabBadgeContainerStyle={styles.tabBadgeContainerStyle}
+                        values={['Calendar', 'ToDo', 'Notes']}
+                        selectedIndex={this.state.selectedIndex}
+                        onTabPress={this.handleIndexChange}
+                    />
+                </View>
+                <View style={styles.maincontainer}>{this.state.currentView}</View>
+            </View>
+        );
+    }
 }
 const appRender = () => {
     return (
@@ -39,10 +67,39 @@ const appRender = () => {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    tab: {
+        marginTop: 20,
+        height: 80,
+    },
+
+    maincontainer: {
+        justifyContent: "center",
+        backgroundColor: "powderblue",
+        height: 630,
+    },
+
+    container: {
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+
+    tabsContainerStyle: {
+        height: 80, 
+    },
+
+    tabStyle: {
+        backgroundColor: 'skyblue',
+    },
+
+    activeTabStyle: {
+        backgroundColor: 'steelblue',
+    },
+
+    tabTextStyle: {
+        color: 'black',
+    },
+
+    tabBadgeContainerStyle: {
+        color: 'black',
+    },
 });

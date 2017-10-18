@@ -31,6 +31,9 @@ export default class MainTodo extends React.Component {
         }).then((data) =>  {
             console.log("data", data);
             array = data;
+            if (array == null) {
+                array = [];
+            }
             if (array.length > 0) {
                 this.setState({tasks: array});
                 this.setState({arrayLoaded: true});
